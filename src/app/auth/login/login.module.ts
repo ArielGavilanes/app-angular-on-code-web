@@ -8,6 +8,7 @@ import { TreeSelectModule } from 'primeng/treeselect';
 import { TreeModule } from 'primeng/tree';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PasswordModule } from 'primeng/password';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [LoginComponent, LoginFormComponent, LoginGreetingComponent],
@@ -18,6 +19,7 @@ import { PasswordModule } from 'primeng/password';
     TreeModule,
     BrowserAnimationsModule,
     PasswordModule,
+    RouterModule
   ],
 })
 export class LoginModule {}

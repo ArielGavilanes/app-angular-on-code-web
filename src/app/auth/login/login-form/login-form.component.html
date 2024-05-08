@@ -1,0 +1,36 @@
+<div class="bg-white-alpha-10 border-round text-white">
+  <h2 class="pl-4 pt-4 mb-0">{{ loginMessage }}</h2>
+  <small class="pl-4">
+    ¿Nuevo por aqui?
+    <a class="text-white" [routerLink]="['/register']">Registrate</a></small
+  >
+  <form class="grid p-4">
+    <div class="flex flex-column gap-2 col-12">
+      <label for="nombre_usuario">Nombre de usuario</label>
+      <input
+        pInputText
+        id="nombre_usuario"
+        aria-describedby="nombre_usuario-help"
+        placeholder="Crea un buen nombre de usuario!"
+        formControlName="nombre_usuario"
+      />
+    </div>
+    <div class="flex flex-column gap-2 col-12">
+      <label for="contrasena_usuario">Confirmar contraseña</label>
+      <input
+      pInputText
+      id="contrasena_usuario"
+      formControlName="contrasena_usuario"
+      type="password"
+    />
+  </div>
+    <div class="mr-auto ml-auto">
+      <button
+        pButton
+        class="border-round text-black-alpha-90 bg-white-alpha-30 text-xl p-3 w-11rem font-semibold align border-transparent justify-content-center"
+      >
+        Registrarse
+      </button>
+    </div>
+  </form>
+</div>

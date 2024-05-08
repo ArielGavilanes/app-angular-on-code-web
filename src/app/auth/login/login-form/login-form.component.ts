@@ -7,10 +7,5 @@ import { TreeNode } from 'primeng/api';
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent {
-
-  createAccount: String = 'Crea una cuenta';
-  nodes:  TreeNode<any>[] = [
-    { label: 'Node 1', data: '1' },
-    { label: 'Node 2', data: '2' },
-  ];
+  loginMessage: String = 'Vamos a iniciar sesion'
 }

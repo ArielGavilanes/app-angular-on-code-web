@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./login-greeting.component.css'],
 })
 export class LoginGreetingComponent {
-  greetingMessage: string = 'Hola! Un gusto conocerte';
+  greetingMessage: string = 'Que bueno es verte de nuevo!';
 }
