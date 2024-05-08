@@ -2,6 +2,6 @@
   <div class="text-white p-4 col-12">Logo aqui</div>
   <div class="p-6 grid col-12">
     <div class="col-6 align-content-center"><register-greeting></register-greeting></div>
-    <div class="col-6"><register-form></register-form></div>
+    <div class="col-6"><register-form [roles]="roles" (sendRegisterData)="registerUser($event)"></register-form></div>
   </div>
 </div>

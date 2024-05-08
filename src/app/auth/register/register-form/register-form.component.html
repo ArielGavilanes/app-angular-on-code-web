@@ -1,10 +1,11 @@
 <div class="bg-white-alpha-10 border-round text-white">
   <h2 class="pl-4 pt-4 mb-0">{{ createAccount }}</h2>
-  <small class="pl-4"
-    >Ya tienes una cuenta?,
-    <a class="text-white" href="/login">Inicia sesion</a></small
+  <small class="pl-4">
+    ¿Ya tienes una cuenta?,
+    <a class="text-white" [routerLink]="['/login']">Inicia sesion</a></small
   >
-  <form class="grid p-4">
+
+  <form class="grid p-4" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="flex flex-column gap-2 col-8">
       <label for="nombre_usuario">Nombre de usuario</label>
       <input
@@ -12,29 +13,73 @@
         id="nombre_usuario"
         aria-describedby="nombre_usuario-help"
         placeholder="Crea un buen nombre de usuario!"
+        formControlName="nombre_usuario"
       />
+      <div
+        *ngIf="registerForm.controls['nombre_usuario'].errors?.['minlength'] && formSubmitted"
+      >
+        <small style="color: red">
+          Tu nombre de usuario de tener al menos 10 caracteres
+        </small>
+      </div>
+      <div
+        *ngIf="registerForm.controls['nombre_usuario'].errors?.['required'] && formSubmitted"
+      >
+        <small style="color: red"> Este campo es obligatorio </small>
+      </div>
     </div>
     <div class="flex flex-column gap-2 col-4">
       <label for="id_rol">Rol</label>
       <p-treeSelect
-        class="w-full"
+        class="w-full text-black-alpha-90"
         containerStyleClass="w-full"
-        [options]="nodes"
-        placeholder="Select Item"
+        [options]="roles"
+        placeholder="Selecciona rol"
+        formControlName="id_rol"
       />
+      <div
+        *ngIf="registerForm.controls['id_rol'].errors?.['required'] && formSubmitted"
+      >
+        <small style="color: red"> Este campo es obligatorio </small>
+      </div>
     </div>
     <div class="flex flex-column gap-2 col-6">
       <label for="contrasena_usuario">Contraseña</label>
       <p-password
-        promptLabel="Choose a password"
-        weakLabel="Too simple"
-        mediumLabel="Average complexity"
-        strongLabel="Complex password"
+        promptLabel="Selecciona una contraseña"
+        weakLabel="Demasiado facil"
+        mediumLabel="Aceptable"
+        strongLabel="Buena eleccion"
+        formControlName="contrasena_usuario"
       />
+      <div
+        *ngIf="registerForm.controls['contrasena_usuario'].errors?.['required'] && formSubmitted"
+      >
+        <small style="color: red"> Este campo es obligatorio </small>
+      </div>
+      <div
+      *ngIf="registerForm.controls['contrasena_usuario'].errors?.['minlength'] && formSubmitted"
+    >
+      <small style="color: red">
+        Tu contraseña debe tener al menos 8 caracteres
+      </small>
+    </div>
     </div>
     <div class="flex flex-column gap-2 col-6">
       <label for="confirmar_contrasena">Confirmar contraseña</label>
-      <p-password [feedback]="false" />
+      <p-password formControlName="confirmar_contrasena" [feedback]="false" />
+      <!-- <div
+        *ngIf="registerForm.controls['confirmar_contrasena'].errors?.['required'] && formSubmitted"
+      >
+        <small style="color: red"> Este campo es obligatorio </small>
+      </div> -->
+      <div
+      *ngIf="registerForm.hasError('passwordMismatch') && formSubmitted"
+    >
+      <small style="color: red">
+        Las contraseñas no coinciden
+      </small>
+    </div>
     </div>
     <div class="flex flex-column gap-2 col-12">
       <label for="email_usuario">Correo Electronico</label>
@@ -43,7 +88,18 @@
         id="email_usuario"
         aria-describedby="email_usuario-help"
         placeholder="Inserta tu correo electronico"
+        formControlName="email_usuario"
       />
+      <div
+        *ngIf="registerForm.controls['email_usuario'].errors?.['required'] && formSubmitted"
+      >
+        <small style="color: red"> Este campo es obligatorio </small>
+      </div>
+      <div
+        *ngIf="registerForm.controls['email_usuario'].errors?.['email'] && formSubmitted"
+      >
+        <small style="color: red"> Ingresa un correo electronico valido </small>
+      </div>
     </div>
     <div class="flex flex-column gap-2 col-6">
       <label for="nombre_usuario_real">Nombre</label>
@@ -52,7 +108,13 @@
         id="nombre_usuario_real"
         aria-describedby="nombre_usuario_real-help"
         placeholder="Cual es tu nombre?"
+        formControlName="nombre_usuario_real"
       />
+      <div
+        *ngIf="registerForm.controls['nombre_usuario_real'].errors?.['required'] && formSubmitted"
+      >
+        <small style="color: red"> Este campo es obligatorio </small>
+      </div>
     </div>
     <div class="flex flex-column gap-2 col-6">
       <label for="apellido_usuario">Apellido</label>
@@ -61,7 +123,21 @@
         id="apellido_usuario"
         aria-describedby="apellido_usuarioo-help"
         placeholder="Cual es tu apellido?"
+        formControlName="apellido_usuario"
       />
+      <div
+        *ngIf="registerForm.controls['apellido_usuario'].errors?.['required'] && formSubmitted"
+      >
+        <small style="color: red"> Este campo es obligatorio </small>
+      </div>
+    </div>
+    <div class="mr-auto ml-auto">
+      <button
+        pButton
+        class="border-round text-black-alpha-90 bg-white-alpha-30 text-xl p-3 w-11rem font-semibold align border-transparent justify-content-center"
+      >
+        Registrarse
+      </button>
     </div>
   </form>
 </div>

@@ -8,6 +8,9 @@ import { TreeSelectModule } from 'primeng/treeselect';
 import { TreeModule } from 'primeng/tree';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PasswordModule } from 'primeng/password';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
 
 
 @NgModule({
@@ -23,6 +26,9 @@ import { PasswordModule } from 'primeng/password';
     TreeModule,
     BrowserAnimationsModule,
     PasswordModule,
+    ReactiveFormsModule,
+    RouterModule,
+    ButtonModule
   ]
 })
 export class RegisterModule { }
