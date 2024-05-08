@@ -1,0 +1,67 @@
+<div class="bg-white-alpha-10 border-round text-white">
+  <h2 class="pl-4 pt-4 mb-0">{{ createAccount }}</h2>
+  <small class="pl-4"
+    >Ya tienes una cuenta?,
+    <a class="text-white" href="/login">Inicia sesion</a></small
+  >
+  <form class="grid p-4">
+    <div class="flex flex-column gap-2 col-8">
+      <label for="nombre_usuario">Nombre de usuario</label>
+      <input
+        pInputText
+        id="nombre_usuario"
+        aria-describedby="nombre_usuario-help"
+        placeholder="Crea un buen nombre de usuario!"
+      />
+    </div>
+    <div class="flex flex-column gap-2 col-4">
+      <label for="id_rol">Rol</label>
+      <p-treeSelect
+        class="w-full"
+        containerStyleClass="w-full"
+        [options]="nodes"
+        placeholder="Select Item"
+      />
+    </div>
+    <div class="flex flex-column gap-2 col-6">
+      <label for="contrasena_usuario">Contraseña</label>
+      <p-password
+        promptLabel="Choose a password"
+        weakLabel="Too simple"
+        mediumLabel="Average complexity"
+        strongLabel="Complex password"
+      />
+    </div>
+    <div class="flex flex-column gap-2 col-6">
+      <label for="confirmar_contrasena">Confirmar contraseña</label>
+      <p-password [feedback]="false" />
+    </div>
+    <div class="flex flex-column gap-2 col-12">
+      <label for="email_usuario">Correo Electronico</label>
+      <input
+        pInputText
+        id="email_usuario"
+        aria-describedby="email_usuario-help"
+        placeholder="Inserta tu correo electronico"
+      />
+    </div>
+    <div class="flex flex-column gap-2 col-6">
+      <label for="nombre_usuario_real">Nombre</label>
+      <input
+        pInputText
+        id="nombre_usuario_real"
+        aria-describedby="nombre_usuario_real-help"
+        placeholder="Cual es tu nombre?"
+      />
+    </div>
+    <div class="flex flex-column gap-2 col-6">
+      <label for="apellido_usuario">Apellido</label>
+      <input
+        pInputText
+        id="apellido_usuario"
+        aria-describedby="apellido_usuarioo-help"
+        placeholder="Cual es tu apellido?"
+      />
+    </div>
+  </form>
+</div>
