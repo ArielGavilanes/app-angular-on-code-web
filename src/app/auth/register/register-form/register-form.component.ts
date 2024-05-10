@@ -11,11 +11,16 @@ import { passwordMatchValidator } from 'src/app/validators/password-match.valida
 })
 export class RegisterFormComponent {
   createAccount: String = 'Crea una cuenta';
+
   @Input() roles: TreeNode[] = [];
+
   formSubmitted = false;
+
   selectedRole: String = '';
+
   @Output() sendRegisterData: EventEmitter<Register> =
     new EventEmitter<Register>();
+
   registerData: Register = {
     nombre_usuario: '',
     contrasena_usuario: '',
@@ -24,7 +29,9 @@ export class RegisterFormComponent {
     nombre_usuario_real: '',
     apellido_usuario: '',
   };
+
   registerForm: FormGroup = new FormGroup({});
+
   constructor(private formBuilder: FormBuilder) {
     this.registerForm = this.formBuilder.group(
       {
@@ -48,18 +55,24 @@ export class RegisterFormComponent {
   onSubmit() {
     this.registerData.nombre_usuario =
       this.registerForm.get('nombre_usuario')?.value;
+
     this.registerData.contrasena_usuario =
       this.registerForm.get('contrasena_usuario')?.value;
+
     this.registerData.id_rol = this.registerForm.get('id_rol')?.value.data;
+
     this.registerData.email_usuario =
       this.registerForm.get('email_usuario')?.value;
+
     this.registerData.nombre_usuario_real = this.registerForm.get(
       'nombre_usuario_real'
     )?.value;
+
     this.registerData.apellido_usuario =
       this.registerForm.get('apellido_usuario')?.value;
-    console.log(this.registerData);
+
     this.formSubmitted = true;
+
     if (this.registerForm.valid) {
       this.sendRegisterData.emit(this.registerData);
     }

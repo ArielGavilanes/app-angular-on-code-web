@@ -10,6 +10,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PasswordModule } from 'primeng/password';
 import { RouterModule } from '@angular/router';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import { MessagesModule } from 'primeng/messages';
+
 @NgModule({
   declarations: [LoginComponent, LoginFormComponent, LoginGreetingComponent],
   imports: [
@@ -19,7 +22,9 @@ import { RouterModule } from '@angular/router';
     TreeModule,
     BrowserAnimationsModule,
     PasswordModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
+    MessagesModule
   ],
 })
 export class LoginModule {}

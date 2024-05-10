@@ -4,6 +4,7 @@ import { environment } from 'environment';
 import { Observable } from 'rxjs';
 import { Register } from './interface/register.interface';
 import { Roles } from './interface/roles.interface';
+import { Login } from './interface/login.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -19,5 +20,9 @@ export class DatabaseService {
 
   registerUser(user: Register): Observable<any> {
     return this.http.post<any>(this.baseUrl + '/auth/register/', user);
+  }
+
+  loginUser(payload: Login): Observable<any> {
+    return this.http.post<any>(this.baseUrl + '/auth/login/', payload);
   }
 }
