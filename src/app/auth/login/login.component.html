@@ -1,7 +1,16 @@
 <div class="grid bg-black-alpha-90">
-  <div class="text-white p-4 col-12">Logo aqui</div>
+  <div class="p-4 col-12">
+    <img src="../assets/img/onCodeWeb.png" alt="" class="h-4rem" />
+  </div>
   <div class="p-6 grid col-12">
-    <div class="col-4"><login-form (sendLoginData)="loginUser($event)" [messages]="messages"></login-form></div>
-    <div class="col-8 align-content-center"><login-greeting></login-greeting></div>
+    <div class="col-4">
+      <login-form
+        (sendLoginData)="loginUser($event)"
+        [messages]="messages"
+      ></login-form>
+    </div>
+    <div class="col-8 align-content-center">
+      <login-greeting></login-greeting>
+    </div>
   </div>
 </div>
