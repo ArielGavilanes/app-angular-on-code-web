@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { WebRoutingModule } from './web-routing.module';
 import { WebComponent } from './web.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { WebComponent } from './web.component';
   ],
   imports: [
     CommonModule,
-    WebRoutingModule
+    WebRoutingModule,
+    SharedModule
   ]
 })
 export class WebModule { }
