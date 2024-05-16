@@ -11,7 +11,11 @@
     />
   </ng-template>
   <ng-template pTemplate="item" let-item let-root="root">
-    <a pRipple class="flex align-items-center p-menuitem-link" [routerLink]="item.routerLink">
+    <a
+      pRipple
+      class="flex align-items-center p-menuitem-link"
+      [routerLink]="item.routerLink"
+    >
       <div class="text-white">
         <span [class]="item.icon"></span>
         <span class="ml-2">{{ item.label }}</span>
