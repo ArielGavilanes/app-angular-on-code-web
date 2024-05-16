@@ -1,35 +1,87 @@
-<p-menubar
-  [model]="items"
-  styleClass="bg-white-alpha-10 border-transparent	border-noround text-white	"
->
-  <ng-template pTemplate="start">
-    <img
-      src="../assets/img/onCodeWeb.png"
-      alt=""
-      class="h-4rem p-1"
-      [routerLink]="['/dashboard']"
-    />
-  </ng-template>
-  <ng-template pTemplate="item" let-item let-root="root">
-    <a
-      pRipple
-      class="flex align-items-center p-menuitem-link"
-      [routerLink]="item.routerLink"
-    >
-      <div class="text-white">
-        <span [class]="item.icon"></span>
-        <span class="ml-2">{{ item.label }}</span>
-      </div>
-
-      <!-- <span *ngIf="item.shortcut" class="ml-auto border-1 surface-border border-round surface-100 text-xs p-1">{{ item.shortcut }}</span> -->
-      <i
+<div class="bg-black-alpha-90">
+  <p-menubar
+    [model]="items"
+    styleClass="bg-white-alpha-10 border-transparent	border-noround text-white	"
+  >
+    <ng-template pTemplate="start">
+      <img
+        src="../assets/img/onCodeWeb.png"
+        alt=""
+        class="h-4rem p-1 cursor-pointer"
+        [routerLink]="['/dashboard']"
+      />
+    </ng-template>
+    <ng-template pTemplate="item" let-item let-root="root">
+      <a
+        pRipple
+        class="flex align-items-center p-menuitem-link cursor-pointer"
+        [routerLink]="item.routerLink"
+        *ngIf="!item.items"
+      >
+        <div class="text-white">
+          <span [class]="item.icon"></span>
+          <span class="ml-2">{{ item.label }}</span>
+        </div>
+        <span
+          *ngIf="item.shortcut"
+          class="ml-auto border-1 surface-border border-round surface-100 text-xs p-1"
+          >{{ item.shortcut }}</span
+        >
+      </a>
+      <a
+        pRipple
+        class="flex align-items-center p-menuitem-link cursor-pointer"
         *ngIf="item.items"
-        [ngClass]="[
-          'pi',
-          root ? 'pi-angle-down ml-2' : 'pi-angle-right ml-auto'
-        ]"
-        class="text-white"
-      ></i>
-    </a>
-  </ng-template>
-</p-menubar>
+        [routerLink]="item.items.routerLink"
+      >
+        <div class="text-white">
+          <span [class]="item.icon"></span>
+          <span class="ml-2">{{ item.label }}</span>
+        </div>
+        <i
+          [ngClass]="[
+            'pi',
+            root ? 'pi-angle-down ml-2' : 'pi-angle-right ml-auto'
+          ]"
+          class="text-white cursor-pointer"
+        ></i>
+      </a>
+    </ng-template>
+    <ng-template pTemplate="end">
+      <div class="p-d-flex inline-flex">
+        <div
+          class="p-inputgroup p-component custom-input"
+          style="border-radius: 3rem; margin-right: 1rem"
+        >
+          <input
+            type="text"
+            pInputText
+            [(ngModel)]="query_curso"
+            class="p-inputtext p-component"
+            style="border: none; border-radius: 3rem 0 0 3rem"
+            (keydown.enter)="busquedaCurso()"
+          />
+          <span
+            class="p-inputgroup-addon p-component"
+            style="
+              background-color: white;
+              border: none;
+              border-radius: 0 3rem 3rem 0;
+            "
+          >
+            <i class="pi pi-search"></i>
+          </span>
+        </div>
+        <div>
+          <p-avatar
+            label="V"
+            styleClass="mr-2"
+            size="large"
+            [style]="{ 'background-color': '#ece9fc', color: '#2a1261' }"
+            shape="circle"
+          />
+        </div>
+      </div>
+    </ng-template>
+  </p-menubar>
+</div>

@@ -3,11 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthModule } from './auth/auth.module';
 import { WebModule } from './web/web.module';
 import { ErrorModule } from './error/error.module';
+import { CategoriasModule } from './categorias/categorias.module';
 
 const routes: Routes = [{ path: '', redirectTo: '/login', pathMatch: 'full' }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule, AuthModule, WebModule, ErrorModule],
+  exports: [RouterModule, AuthModule, WebModule, CategoriasModule, ErrorModule],
 })
 export class AppRoutingModule {}

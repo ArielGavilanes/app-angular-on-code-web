@@ -6,10 +6,23 @@ import { ButtonModule } from 'primeng/button';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { MenubarModule } from 'primeng/menubar';
+import { FormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { AvatarModule } from 'primeng/avatar';
+import { AvatarGroupModule } from 'primeng/avatargroup';
 
 @NgModule({
   declarations: [SidebarComponent, NavbarComponent, FooterComponent],
-  imports: [CommonModule, SidebarModule, ButtonModule, MenubarModule],
+  imports: [
+    CommonModule,
+    SidebarModule,
+    ButtonModule,
+    MenubarModule,
+    FormsModule,
+    InputTextModule,
+    AvatarGroupModule,
+    AvatarModule,
+  ],
   exports: [SidebarComponent, NavbarComponent, FooterComponent],
 })
 export class SharedModule {}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { SharedService } from '../shared.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,10 @@ import { SharedService } from '../shared.service';
 export class NavbarComponent implements OnInit {
   items: MenuItem[] = [];
 
-  constructor(private sharedService: SharedService) { }
+  query_curso: string = '';
+  constructor(private sharedService: SharedService,
+    private router:Router
+  ) {}
 
   getAllCategories() {
     this.sharedService.getAllCategories().subscribe(
@@ -19,17 +23,30 @@ export class NavbarComponent implements OnInit {
           {
             label: 'Categorías',
             icon: 'pi pi-shopping-cart',
-            items: response.map(categoria => ({ label: categoria.nombre_categoria }))
+            items: response.map((categoria) => ({
+              label: categoria.nombre_categoria,
+              routerLink: '/categorias/' + categoria.nombre_categoria,
+            })),
           },
-          { label: 'Contacto', icon: 'pi pi-envelope', routerLink: '/contacto' },
+          {
+            label: 'Contacto',
+            icon: 'pi pi-envelope',
+            routerLink: '/contacto',
+          },
           { label: 'Acerca de', icon: 'pi pi-info', routerLink: '/acerca-de' },
         ];
-        console.log('items', this.items)
+        console.log('items', this.items);
       },
       (error) => {
         console.error('Error al obtener las categorías:', error);
       }
     );
+  }
+
+  busquedaCurso() {
+    if(this.query_curso) {
+      this.router.navigate(['/cursos'], { queryParams: { curso_nombre: this.query_curso } });
+    }
   }
   ngOnInit(): void {
     this.getAllCategories();

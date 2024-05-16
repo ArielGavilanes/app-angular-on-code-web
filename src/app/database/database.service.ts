@@ -29,4 +29,8 @@ export class DatabaseService {
   getAllCategories(): Observable<any> { //cambiar tipo any por un array interfaz de categorias
     return this.http.get<any>(this.baseUrl + '/categorias');
   }
+
+  getCoursesByCategoryName(nombre_categoria: string): Observable<any> { //cambiar tipo any por un array interfaz de curso
+    return this.http.get<any>(this.baseUrl + '/cursos/categoria/' + nombre_categoria + '/');
+  }
 }
