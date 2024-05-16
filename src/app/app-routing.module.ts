@@ -3,12 +3,20 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthModule } from './auth/auth.module';
 import { WebModule } from './web/web.module';
 import { ErrorModule } from './error/error.module';
+import { CursosModule } from './cursos/cursos.module';
 import { CategoriasModule } from './categorias/categorias.module';
 
 const routes: Routes = [{ path: '', redirectTo: '/login', pathMatch: 'full' }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule, AuthModule, WebModule, CategoriasModule, ErrorModule],
+  exports: [
+    RouterModule,
+    AuthModule,
+    WebModule,
+    CursosModule,
+    CategoriasModule,
+    ErrorModule,
+  ],
 })
 export class AppRoutingModule {}
