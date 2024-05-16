@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-resultados-curso',
+  selector: 'resultados-curso',
   templateUrl: './resultados-curso.component.html',
-  styleUrls: ['./resultados-curso.component.css']
+  styleUrls: ['./resultados-curso.component.css'],
 })
 export class ResultadosCursoComponent {
-
+  @Input() query_curso: string = '';
 }
