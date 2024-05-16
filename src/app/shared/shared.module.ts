@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
+import { NavbarComponent } from './navbar/navbar.component';
+import { MenubarModule } from 'primeng/menubar';
 
 
 
@@ -10,15 +12,17 @@ import { ButtonModule } from 'primeng/button';
 @NgModule({
   declarations: [
     SidebarComponent,
-    
+    NavbarComponent,
   ],
   imports: [
     CommonModule,
     SidebarModule,
-    ButtonModule
+    ButtonModule,
+    MenubarModule
   ],
   exports: [
-    SidebarComponent
+    SidebarComponent,
+    NavbarComponent
   ]
 })
 

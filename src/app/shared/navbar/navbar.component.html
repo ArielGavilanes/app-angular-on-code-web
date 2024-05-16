@@ -1,0 +1,31 @@
+<p-menubar
+  [model]="items"
+  styleClass="bg-white-alpha-10 border-transparent	border-noround text-white	"
+>
+  <ng-template pTemplate="start">
+    <img
+      src="../assets/img/onCodeWeb.png"
+      alt=""
+      class="h-4rem p-1"
+      [routerLink]="['/dashboard']"
+    />
+  </ng-template>
+  <ng-template pTemplate="item" let-item let-root="root">
+    <a pRipple class="flex align-items-center p-menuitem-link" [routerLink]="item.routerLink">
+      <div class="text-white">
+        <span [class]="item.icon"></span>
+        <span class="ml-2">{{ item.label }}</span>
+      </div>
+
+      <!-- <span *ngIf="item.shortcut" class="ml-auto border-1 surface-border border-round surface-100 text-xs p-1">{{ item.shortcut }}</span> -->
+      <i
+        *ngIf="item.items"
+        [ngClass]="[
+          'pi',
+          root ? 'pi-angle-down ml-2' : 'pi-angle-right ml-auto'
+        ]"
+        class="text-white"
+      ></i>
+    </a>
+  </ng-template>
+</p-menubar>

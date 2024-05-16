@@ -1,0 +1,17 @@
+:host ::ng-deep .p-menuitem-link:hover {
+  background-color: var(--gray-500);
+}
+
+:host ::ng-deep .p-submenu-list {
+  background-color: var(--gray-500);
+}
+
+:host ::ng-deep .p-menubar .p-menuitem.p-highlight > .p-menuitem-content {
+  color: #1D4ED8;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: none;
+  border-color: transparent;
+}
+:host ::ng-deep .p-menuitem-active {
+  background-color: black;
+}

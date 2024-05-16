@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { AbstractType, Injectable } from '@angular/core';
 import { environment } from 'environment';
 import { Observable } from 'rxjs';
 import { Register } from './interface/register.interface';
@@ -24,5 +24,9 @@ export class DatabaseService {
 
   loginUser(payload: Login): Observable<any> {
     return this.http.post<any>(this.baseUrl + '/auth/login/', payload);
+  }
+
+  getAllCategories(): Observable<any> { //cambiar tipo any por un array interfaz de categorias
+    return this.http.get<any>(this.baseUrl + '/categorias');
   }
 }

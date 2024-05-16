@@ -1,0 +1,16 @@
+.sidebar-item {
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.sidebar-label {
+  display: block;
+  margin-top: 5px;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.p-overlay-visible {
+  opacity: 1;
+}
