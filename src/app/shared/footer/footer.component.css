@@ -1,5 +1,3 @@
-@import "primeicons/primeicons.css";
-
 footer {
     background-color: #000000;
     color: #fff;
@@ -24,8 +22,8 @@ i {
 
 .icons {
     margin-top: 0px;
-    display: flex; 
-    justify-content: center; 
+    display: flex;
+    justify-content: center;
     align-items: center;
     margin-bottom: 20px;
 }
@@ -52,4 +50,4 @@ i {
 .derechos {
     font-size: 14px;
     margin-right: 10px;
-} 
+}
