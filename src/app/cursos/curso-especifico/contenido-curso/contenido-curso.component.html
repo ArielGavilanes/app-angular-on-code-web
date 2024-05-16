@@ -1,1 +1,29 @@
-<p>contenido-curso works!</p>
+<div class="container">
+    <div class="main-content">
+      <div *ngFor="let section of sections" class="section">
+        <h2>{{ section.title }}</h2>
+        <p>{{ section.description }}</p>
+  
+        <div class="content-items">
+          <div *ngFor="let item of section.content" class="content-item">
+            <ng-container *ngIf="item.type === 'image'">
+              <img *ngIf="item.url" [src]="item.url" alt="Image" class="course-image">
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar">
+      <h3>Contenido del Curso</h3>
+      <ul>
+        <li *ngFor="let section of sections">
+          <a href="#{{section.title}}">{{ section.title }}</a>
+        </li>
+      </ul>
+      <div class="important-info">
+        <h3>Información Importante</h3>
+        <p>Aquí puedes agregar información adicional sobre el curso, como requisitos, objetivos, etc.</p>
+      </div>
+    </div>
+  </div>
+  

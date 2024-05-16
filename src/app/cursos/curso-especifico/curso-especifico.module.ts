@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CursoEspecificoComponent } from './curso-especifico.component';
 import { PortadaCursoComponent } from './portada-curso/portada-curso.component';
 import { ContenidoCursoComponent } from './contenido-curso/contenido-curso.component';
+import { CardModule } from 'primeng/card';
 
 
 
@@ -13,7 +14,8 @@ import { ContenidoCursoComponent } from './contenido-curso/contenido-curso.compo
     ContenidoCursoComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    CardModule
   ]
 })
 export class CursoEspecificoModule { }
