@@ -1,14 +1,27 @@
-<p-carousel [value]="products" [numVisible]="1" [numScroll]="1" [circular]="true"
-    [responsiveOptions]="responsiveOptions" autoplayInterval="3000">
-    <ng-template let-product pTemplate="item">
-        <div class="border-1 surface-border border-round m-2 p-3">
-            <div class="">
-                <div class="relative mx-auto">
-                    <img src="{{ product.image }}" [alt]="product.name" class="w-full border-round" />
-                    <p-tag [value]="product.inventoryStatus" class="absolute"
-                        [ngStyle]="{ 'left.px': 5, 'top.px': 2 }" />
-                </div>
-            </div>
+<p-carousel
+  [value]="products"
+  [numVisible]="1"
+  [numScroll]="1"
+  [circular]="true"
+  [responsiveOptions]="responsiveOptions"
+  autoplayInterval="3000"
+>
+  <ng-template let-product pTemplate="item">
+    <div class="border-1 surface-border border-round m-2 p-3">
+      <div class="">
+        <div class="relative mx-auto">
+          <img
+            src="{{ product.image }}"
+            [alt]="product.name"
+            class="w-full border-round"
+          />
+          <p-tag
+            [value]="product.inventoryStatus"
+            class="absolute"
+            [ngStyle]="{ 'left.px': 5, 'top.px': 2 }"
+          />
         </div>
-    </ng-template>
+      </div>
+    </div>
+  </ng-template>
 </p-carousel>
