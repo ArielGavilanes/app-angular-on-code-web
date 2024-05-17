@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
+
 
 @Component({
   selector: 'cursos-list',
@@ -7,4 +8,11 @@ import { Component, Input } from '@angular/core';
 })
 export class CursosListComponent {
   @Input() cursos: any[] = [];
+
+  @Output() verDetallesClick: EventEmitter<number> = new EventEmitter<number>();
+
+  onVerDetallesClick(id: number) {
+    this.verDetallesClick.emit(id);
+  }
+
 }
