@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [SidebarComponent, NavbarComponent, FooterComponent],
@@ -22,6 +23,7 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
     InputTextModule,
     AvatarGroupModule,
     AvatarModule,
+    RouterModule
   ],
   exports: [SidebarComponent, NavbarComponent, FooterComponent],
 })

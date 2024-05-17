@@ -18,7 +18,6 @@ import { SearchEffects } from './state/effects/search.effects';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule,
     HttpClientModule,
     StoreModule.forRoot(ROOT_REDUCERS),
     StoreDevtoolsModule.instrument({ name: 'Test' }),
