@@ -11,6 +11,7 @@ import { ROOT_REDUCERS } from './state/app.state';
 import { AuthEffects } from './state/effects/auth.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { CategoriasModule } from './categorias/categorias.module';
+import { SearchEffects } from './state/effects/search.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,7 @@ import { CategoriasModule } from './categorias/categorias.module';
     StoreModule.forRoot(ROOT_REDUCERS),
     StoreDevtoolsModule.instrument({ name: 'Test' }),
     CategoriasModule,
+    EffectsModule.forRoot([AuthEffects, SearchEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

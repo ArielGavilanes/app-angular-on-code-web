@@ -17,7 +17,7 @@ import { AuthGuard } from './guard/auth.guard';
     AuthRoutingModule,
     LoginModule,
     RegisterModule,
-    EffectsModule.forRoot([AuthEffects]),
+    // EffectsModule.forRoot([AuthEffects]),
   ],
   providers: [
     AuthService,

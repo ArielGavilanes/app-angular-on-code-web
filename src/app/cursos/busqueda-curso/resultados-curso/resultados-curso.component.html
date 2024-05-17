@@ -1,2 +1,40 @@
-<h1 class="text-white">Resultado para busqueda {{ query_curso }}</h1>
-<a class="text-white" [routerLink]="['/cursos/1']">Aprende Angular</a>
+<div
+  class="pt-6"
+  style="margin-left: 750%"
+  *ngIf="isLoading; else loadedContent"
+>
+  <div class="p-m-4">
+    <p-progressSpinner
+      styleClass="w-5rem h-5rem"
+      strokeWidth="8"
+      fill="#191919"
+      animationDuration=".7s"
+      stroke="#FFFFFF"
+    ></p-progressSpinner>
+  </div>
+</div>
+
+<ng-template #loadedContent>
+  <div
+    *ngIf="foundedCursos && foundedCursos.length > 0; else noResults"
+    class="p-2"
+  >
+    <h1 class="text-white">Resultado para busqueda {{ query_curso }}</h1>
+    <div *ngFor="let curso of foundedCursos" class="w-sc">
+      <div class="">
+        <img [src]="getPortadaBase64(curso.portada_curso)" alt="">
+      </div>
+      <div>
+        <h2 class="text-white">{{ curso.nombre_curso }}</h2>
+      </div>
+      <p-divider />
+
+    </div>
+  </div>
+
+  <ng-template #noResults>
+    <div class="p-2">
+      <h1 class="text-white">Sin resultados para {{ query_curso }}</h1>
+    </div>
+  </ng-template>
+</ng-template>
