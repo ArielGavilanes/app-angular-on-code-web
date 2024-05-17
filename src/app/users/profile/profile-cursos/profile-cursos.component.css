@@ -1,0 +1,26 @@
+.profile-cursos {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .profile-cursos h2 {
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .profile-cursos ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .profile-cursos li {
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+  }
+  

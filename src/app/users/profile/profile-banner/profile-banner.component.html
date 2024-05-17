@@ -1,0 +1,14 @@
+<div class="profile-banner">
+    <div class="cover-photo-container">
+      <img [src]="coverPhotoUrl" alt="Cover Photo" class="cover-photo">
+      <button class="cover-photo-button" (click)="uploadCoverPhoto()">Subir Foto de Portada</button>
+      <input type="file" id="coverPhotoInput" (change)="onCoverPhotoSelected($event)" hidden>
+    </div>
+    <div class="profile-photo-container">
+      <img [src]="profilePhotoUrl" alt="Profile Photo" class="profile-photo">
+      <button class="profile-photo-button" (click)="uploadProfilePhoto()">Subir Foto de Perfil</button>
+      <input type="file" id="profilePhotoInput" (change)="onProfilePhotoSelected($event)" hidden>
+    </div>
+    <h1 class="username">{{ username }}</h1>
+  </div>
+  

@@ -5,6 +5,7 @@ import { WebModule } from './web/web.module';
 import { ErrorModule } from './error/error.module';
 import { CursosModule } from './cursos/cursos.module';
 import { CategoriasModule } from './categorias/categorias.module';
+import { UsersModule } from './users/users.module';
 
 const routes: Routes = [{ path: '', redirectTo: '/login', pathMatch: 'full' }];
 
@@ -16,6 +17,7 @@ const routes: Routes = [{ path: '', redirectTo: '/login', pathMatch: 'full' }];
     WebModule,
     CursosModule,
     CategoriasModule,
+    UsersModule,
     ErrorModule,
   ],
 })

@@ -21,7 +21,7 @@ import { CategoriasModule } from './categorias/categorias.module';
     HttpClientModule,
     StoreModule.forRoot(ROOT_REDUCERS),
     StoreDevtoolsModule.instrument({ name: 'Test' }),
-    CategoriasModule
+    CategoriasModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
