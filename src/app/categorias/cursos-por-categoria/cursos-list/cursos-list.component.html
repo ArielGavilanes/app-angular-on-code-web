@@ -1,3 +1,31 @@
-<div *ngFor="let curso of cursos">
+<!-- <div *ngFor="let curso of cursos">
   <h1>{{ curso.nombre_curso }}</h1>
-</div>
+</div> -->
+
+<p-card *ngFor="let curso of cursos" class="curso-card p-4 gap-2">
+  <ng-template pTemplate="header">
+    <div class="card-header cursor-pointer" [routerLink]="['/cursos', curso.id_curso]" >{{ curso.nombre_curso }}</div>
+
+  </ng-template>
+  <ng-template pTemplate="content">
+    <div class="card-body">
+      <p class="card-text">{{ curso.descripcion }}</p>
+      <p class="card-text"><strong>Duración:</strong> {{ curso.duracion }} horas</p>
+      <button pButton type="button" label="Ver Detalles" icon="pi pi-info-circle" (click)="onVerDetallesClick(curso.id)" class="btn btn-primary"></button>
+    </div>
+  </ng-template>
+</p-card>
+
+<!-- <p-card *ngFor="let curso of cursos" class="curso-card">
+  <ng-template pTemplate="header">
+    <div class="card-header">{{ curso.nombre_curso }}</div>
+  </ng-template>
+  <ng-template pTemplate="content">
+    <div class="card-body">
+      <p class="card-text">{{ curso.descripcion }}</p>
+      <p class="card-text"><strong>Duración:</strong> {{ curso.duracion }} horas</p>
+      <button pButton type="button" label="Ver Detalles" icon="pi pi-info-circle" (click)="onVerDetallesClick(curso.id)" class="btn btn-primary"></button>
+    </div>
+  </ng-template>
+</p-card> -->
+
