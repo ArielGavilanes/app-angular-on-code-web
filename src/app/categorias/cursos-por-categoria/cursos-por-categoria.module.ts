@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CursosPorCategoriaComponent } from './cursos-por-categoria.component';
@@ -8,7 +9,8 @@ import { CardModule } from 'primeng/card';
   declarations: [CursosPorCategoriaComponent, CursosListComponent],
   imports: [
     CommonModule,
-    CardModule
+    CardModule,
+    RouterModule
   ],
 })
 export class CursosPorCategoriaModule {}
