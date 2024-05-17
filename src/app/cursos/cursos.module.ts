@@ -6,6 +6,8 @@ import { CursosComponent } from './cursos.component';
 import { CursoEspecificoModule } from './curso-especifico/curso-especifico.module';
 import { SharedModule } from '../shared/shared.module';
 import { BusquedaCursoModule } from './busqueda-curso/busqueda-curso.module';
+import { EffectsModule } from '@ngrx/effects';
+import { SearchEffects } from '../state/effects/search.effects';
 
 @NgModule({
   declarations: [CursosComponent],
@@ -14,7 +16,8 @@ import { BusquedaCursoModule } from './busqueda-curso/busqueda-curso.module';
     CursosRoutingModule,
     CursoEspecificoModule,
     SharedModule,
-    BusquedaCursoModule
+    BusquedaCursoModule,
+    // EffectsModule.forRoot([SearchEffects]),
   ],
 })
 export class CursosModule {}
