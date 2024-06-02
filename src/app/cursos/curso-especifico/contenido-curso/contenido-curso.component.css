@@ -2,6 +2,13 @@
     display: flex;
   }
   
+  @import "primeicons/primeicons.css";
+
+  .center-button {
+    display: flex;
+    justify-content: center;
+  }
+
   .main-content {
     flex: 1;
     padding-right: 20px;
