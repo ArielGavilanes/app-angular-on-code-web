@@ -1,33 +1,69 @@
-.curso-card {
-    margin-bottom: 20px;
-    border-radius: 12px; /* Redondear las esquinas */
-    overflow: hidden; /* Asegurar que el contenido no sobresalga */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .card-header {
-    background-color: #007bff;
-    color: white;
-    padding: 15px;
-    border-top-left-radius: 12px; /* Redondear solo las esquinas superiores */
-    border-top-right-radius: 12px;
-  }
-  
-  .card-body {
-    padding: 20px;
-  }
-  
-  .card-text {
-    margin-bottom: 10px;
-  }
-  
-  .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-  }
-  
-  .btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
-  }
-  
+.course-container {
+  width: 300px; /* Adjust width as needed */
+  display: inline-block; /* Display cards side-by-side */
+  margin: 10px; /* Add spacing between cards */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  background-color: #fff; /* Light background */
+}
+
+.course-title {
+  margin-top: 10px; /* Adjust margin */
+  padding: 10px; /* Add padding */
+  font-size: 18px; /* Adjust font size for smaller headings */
+  border-bottom: 1px solid #ddd; /* Light border */
+}
+
+.course-description {
+  padding: 10px; /* Adjust padding */
+  font-size: 14px; /* Adjust font size */
+}
+
+.course-details {
+  padding: 10px; /* Adjust padding */
+  font-size: 12px; /* Adjust font size for details */
+  color: #888; /* Light text color */
+}
+
+.course-info {
+  display: flex; /* Arrange price and premium info side-by-side */
+  justify-content: space-between; /* Align elements to opposite ends */
+  padding: 10px; /* Adjust padding */
+}
+
+.course-premium,
+.course-price {
+  font-size: 12px;
+  margin: 10px 0 10px 20px; /* Increased left margin, maintained right margin */
+}
+
+.course-premium.premium {
+  color: #007bff;
+}
+
+.course-price {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+
+.course-button {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 16px; /* Reducido el tamaño del botón */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px; /* Añadido margen inferior */
+}
+
+
+
+.course-button:hover {
+  background-color: #0056b3;
+}
+
