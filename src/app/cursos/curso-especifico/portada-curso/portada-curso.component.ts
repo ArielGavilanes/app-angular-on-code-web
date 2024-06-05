@@ -1,15 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-portada-curso',
   templateUrl: './portada-curso.component.html',
-  styleUrls: ['./portada-curso.component.css']
+  styleUrls: ['./portada-curso.component.css'],
 })
 export class PortadaCursoComponent {
-  courseTitle: string = "Curso de Angular";
-  courseDescription: string = "Aprende Angular de manera fácil y rápida";
-  Autor: string = "Jess Sandoval";
-  duration: string = "4 semanas";
-  level: string = "Intermedio";
-}
+  @Input() curso: any;
 
+  getPortadaBase64(portadaCurso: any): string {
+    const buffer = portadaCurso.data;
+    const array = Array.from(new Uint8Array(buffer));
+    const binary = array.map((byte) => String.fromCharCode(byte)).join('');
+    return 'data:image;base64,' + btoa(binary);
+  }
+
+}

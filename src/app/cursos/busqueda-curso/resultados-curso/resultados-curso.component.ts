@@ -16,8 +16,8 @@ export class ResultadosCursoComponent implements OnInit {
   getPortadaBase64(portadaCurso: any): string {
     const buffer = portadaCurso.data;
     const array = Array.from(new Uint8Array(buffer));
-    const binary = array.map(byte => String.fromCharCode(byte)).join('');
-    return 'data:image/jpeg;base64,' + btoa(binary);
+    const binary = array.map((byte) => String.fromCharCode(byte)).join('');
+    return 'data:image;base64,' + btoa(binary);
   }
 
   ngOnInit(): void {

@@ -21,14 +21,13 @@
   >
     <h1 class="text-white">Resultado para busqueda {{ query_curso }}</h1>
     <div *ngFor="let curso of foundedCursos" class="w-sc">
-      <div class="">
-        <img [src]="getPortadaBase64(curso.portada_curso)" alt="">
-      </div>
       <div>
         <h2 class="text-white">{{ curso.nombre_curso }}</h2>
       </div>
+      <div class="">
+        <img [src]="getPortadaBase64(curso.portada_curso)" alt="" />
+      </div>
       <p-divider />
-
     </div>
   </div>
 
