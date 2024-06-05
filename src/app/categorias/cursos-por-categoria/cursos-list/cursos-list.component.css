@@ -1,40 +1,40 @@
 .course-container {
-  width: 300px; /* Adjust width as needed */
-  display: inline-block; /* Display cards side-by-side */
-  margin: 10px; /* Add spacing between cards */
-  border-radius: 5px; /* Rounded corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  background-color: #fff; /* Light background */
+  width: 300px; 
+  display: inline-block; 
+  margin: 10px; 
+  border-radius: 5px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #e5e3e3cd; 
 }
 
 .course-title {
-  margin-top: 10px; /* Adjust margin */
-  padding: 10px; /* Add padding */
-  font-size: 18px; /* Adjust font size for smaller headings */
-  border-bottom: 1px solid #ddd; /* Light border */
+  margin-top: 10px; 
+  padding: 10px;
+  font-size: 18px; 
+  border-bottom: 1px solid #ddd; 
 }
 
 .course-description {
-  padding: 10px; /* Adjust padding */
-  font-size: 14px; /* Adjust font size */
+  padding: 10px; 
+  font-size: 14px;
 }
 
 .course-details {
-  padding: 10px; /* Adjust padding */
-  font-size: 12px; /* Adjust font size for details */
-  color: #888; /* Light text color */
+  padding: 10px;
+  font-size: 12px; 
+  color: #888; 
 }
 
 .course-info {
-  display: flex; /* Arrange price and premium info side-by-side */
-  justify-content: space-between; /* Align elements to opposite ends */
-  padding: 10px; /* Adjust padding */
+  display: flex; 
+  justify-content: space-between; 
+  padding: 10px; 
 }
 
 .course-premium,
 .course-price {
   font-size: 12px;
-  margin: 10px 0 10px 20px; /* Increased left margin, maintained right margin */
+  margin: 10px 0 10px 20px;
 }
 
 .course-premium.premium {
@@ -46,11 +46,10 @@
   margin-bottom: 15px;
 }
 
-
 .course-button {
   background-color: #007bff;
   color: white;
-  padding: 8px 16px; /* Reducido el tamaño del botón */
+  padding: 8px 16px; 
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -58,12 +57,9 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 15px; /* Añadido margen inferior */
+  margin-bottom: 15px; 
 }
-
-
 
 .course-button:hover {
   background-color: #0056b3;
 }
-
