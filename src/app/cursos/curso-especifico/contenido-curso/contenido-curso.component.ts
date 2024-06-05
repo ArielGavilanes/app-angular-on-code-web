@@ -1,11 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-contenido-curso',
   templateUrl: './contenido-curso.component.html',
   styleUrls: ['./contenido-curso.component.css']
 })
-export class ContenidoCursoComponent {
+export class ContenidoCursoComponent implements OnInit {
+  visible: boolean = false;
+
+  showDialog() {
+    this.visible = true;
+  }
+
+ 
+
   sections: Section[] = [
     {
       title: 'Sección 1: Introducción',
@@ -30,7 +38,30 @@ export class ContenidoCursoComponent {
     }
   ];
 
-  constructor() {}
+  nodes: any[] | undefined;
+  selectedNodes: any[] | undefined;
+
+  ngOnInit() {
+    this.nodes = [
+      {
+        label: 'Texto',
+        data: 'Texto',
+        icon: 'pi pi-file'
+      },
+      {
+        label: 'Imagen',
+        data: 'Imagen',
+        icon: 'pi pi-image'
+      },
+      {
+        label: 'Video',
+        data: 'Video',
+        icon: 'pi pi-video'
+      }
+    ];
+
+    this.selectedNodes = [];
+  }
 }
 
 interface Section {
@@ -38,6 +69,7 @@ interface Section {
   description: string;
   content: ContentItem[];
 }
+
 
 interface ContentItem {
   type: 'image';

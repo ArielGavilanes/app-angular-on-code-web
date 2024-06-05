@@ -26,11 +26,9 @@ export class CursosPorCategoriaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.nombre_categoria =
-      this.route.params.subscribe(params => {
-        this.nombre_categoria = params['nombre_categoria']
-        this.getCoursesByCategoryName(this.nombre_categoria);
-      });
-
+    this.nombre_categoria = this.route.params.subscribe((params) => {
+      this.nombre_categoria = params['nombre_categoria'];
+      this.getCoursesByCategoryName(this.nombre_categoria);
+    });
   }
 }
