@@ -1,63 +1,130 @@
 <div class="container">
   <div class="main-content">
-    <div *ngFor="let section of sections" class="section">
-      <h2>{{ section.title }}</h2>
-      <p>{{ section.description }}</p>
+    <div
+      *ngFor="let contenido of contenidoDeCurso; let i = index"
+      class="section"
+    >
+      <h2>Seccion {{ i + 1 }}: {{ contenido.nombre_seccion_contenido }}</h2>
+      <p>{{ contenido.descripcion_contenido }}</p>
 
       <div class="content-items">
-        <div *ngFor="let item of section.content" class="content-item">
-          <ng-container *ngIf="item.type === 'image'">
-            <img *ngIf="item.url" [src]="item.url" alt="Image" class="course-image">
+        <div class="content-item">
+          <ng-container *ngIf="contenido.imagen_contenido">
+            <img
+              [src]="getPortadaBase64(contenido.imagen_contenido)"
+              alt="Image"
+              class="course-image"
+            />
+          </ng-container>
+          <ng-container *ngIf="contenido.url_video_contenido">
+            <iframe
+              width="100%"
+              height="500"
+              [src]="
+                generarEnlaceIncrustadoYouTube(contenido.url_video_contenido)
+              "
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </ng-container>
+          <ng-container *ngIf="contenido.texto_contenido">
+            <h3>{{ contenido.texto_contenido }}</h3>
           </ng-container>
         </div>
       </div>
     </div>
+
     <div class="section center-button">
-      <p-button (click)="showDialog()" label="Agregar más contenido" icon="pi pi-plus-circle" iconPos="right"
-        severity="contrast"></p-button>
+      <p-button
+        (click)="showDialog()"
+        label="Agregar más contenido"
+        icon="pi pi-plus-circle"
+        iconPos="right"
+        severity="contrast"
+      ></p-button>
 
-
-      <p-dialog header="Crear Contenido" [modal]="true" [(visible)]="visible" [style]="{ width: '34rem' }">
+      <p-dialog
+        header="Crear Contenido"
+        [modal]="true"
+        [(visible)]="visible"
+        [style]="{ width: '34rem' }"
+      >
         <span class="p-text-secondary block mb-5">Llena los campos</span>
         <div class="flex align-items-center gap-3 mb-3">
-          <label for="text-content" class="font-semibold w-6rem">Sección:</label>
-          <input pInputText id="text-content" class="flex-auto" autocomplete="off" />
+          <label for="text-content" class="font-semibold w-6rem"
+            >Sección:</label
+          >
+          <input
+            pInputText
+            id="text-content"
+            class="flex-auto"
+            autocomplete="off"
+          />
         </div>
 
         <div class="flex align-items-center gap-3 mb-3">
-          <label for="text-content" class="font-semibold w-6rem">Opciones:</label>
-          <p-treeSelect class="md:w-20rem w-full" containerStyleClass="w-full" [(ngModel)]="selectedNodes"
-            [options]="nodes" placeholder="Select Item" class="flex-auto" ></p-treeSelect>
+          <label for="text-content" class="font-semibold w-6rem"
+            >Opciones:</label
+          >
+          <p-treeSelect
+            class="md:w-20rem w-full"
+            containerStyleClass="w-full"
+            [(ngModel)]="selectedNodes"
+            [options]="nodes"
+            placeholder="Select Item"
+            class="flex-auto"
+          ></p-treeSelect>
         </div>
 
         <div class="flex align-items-center gap-3 mb-3">
-          <label for="text-content" class="font-semibold w-6rem">URL de video:</label>
-          <input pInputText id="text-content" class="flex-auto" autocomplete="off" />
+          <label for="text-content" class="font-semibold w-6rem"
+            >URL de video:</label
+          >
+          <input
+            pInputText
+            id="text-content"
+            class="flex-auto"
+            autocomplete="off"
+          />
         </div>
         <div class="flex align-items-center gap-3 mb-3">
           <label for="text-content" class="font-semibold w-6rem">Texto:</label>
-          <input pInputText id="text-content" class="flex-auto" autocomplete="off" />
+          <input
+            pInputText
+            id="text-content"
+            class="flex-auto"
+            autocomplete="off"
+          />
         </div>
 
         <div class="flex justify-content-end gap-2">
-          <p-button label="Cancelar" severity="secondary" (click)="visible = false"></p-button>
+          <p-button
+            label="Cancelar"
+            severity="secondary"
+            (click)="visible = false"
+          ></p-button>
           <p-button label="Guardar" (click)="visible = false"></p-button>
         </div>
-
       </p-dialog>
-
     </div>
   </div>
   <div class="sidebar">
     <h3>Contenido del Curso</h3>
     <ul>
       <li *ngFor="let section of sections">
-        <a href="#{{section.title}}">{{ section.title }}</a>
+        <a href="#{{ section.title }}">{{ section.title }}</a>
       </li>
     </ul>
     <div class="important-info">
       <h3>Información Importante</h3>
-      <p>Aquí puedes agregar información adicional sobre el curso, como requisitos, objetivos, etc.</p>
+      <p>
+        Aquí puedes agregar información adicional sobre el curso, como
+        requisitos, objetivos, etc.
+      </p>
     </div>
   </div>
 </div>
+<p-button icon="pi pi-iconName" label="Generar certificado" (onClick)="generarCertificado()"></p-button>

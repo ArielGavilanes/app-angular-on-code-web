@@ -11,4 +11,8 @@ export class CursosService {
   getCourseById(id_curso: number): Observable<any> {
     return this.databaseService.getCourseById(id_curso);
   }
+
+  getContentFromACourseById(id_curso: number): Observable<any> {
+    return this.databaseService.getContentFromACourseById(id_curso);
+  }
 }

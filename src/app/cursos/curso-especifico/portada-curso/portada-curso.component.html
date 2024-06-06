@@ -1,6 +1,6 @@
 <div class="p-card udemy-cover">
   <img
-    [src]="getPortadaBase64(curso.portada_curso)"
+    [src]="getPortadaBase64(curso?.portada_curso)"
     alt="Curso de Angular"
     class="cover-image"
   />
@@ -9,7 +9,7 @@
     <h1>{{ curso?.nombre_curso }}</h1>
     <p>{{ curso?.descripcion_curso }}</p>
     <div class="author-details">
-      <p><strong>Creado por:</strong> {{ curso?.id_creador.nombre_usuario }}</p>
+      <p><strong>Creado por:</strong> {{ curso?.id_creador?.nombre_usuario }}</p>
     </div>
     <div *ngIf="curso?.precio_curso == 0; else precioCurso">
       <h1>Gratis</h1>

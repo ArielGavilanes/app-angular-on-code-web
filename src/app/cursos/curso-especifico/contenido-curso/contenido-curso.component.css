@@ -1,7 +1,7 @@
 .container {
     display: flex;
   }
-  
+
   @import "primeicons/primeicons.css";
 
   .center-button {
@@ -13,7 +13,7 @@
     flex: 1;
     padding-right: 20px;
   }
-  
+
   .sidebar {
     border: 1px solid #ccc; /* Añade un borde gris */
     border-radius: 10px; /* Hace que los bordes sean más redondeados */
@@ -21,50 +21,50 @@
     margin-top: 20px; /* Agrega espacio por encima del contenido */
     max-width: 300px; /* Establece el ancho máximo de la barra lateral */
     background-color: #f2f2f2; /* Establece un tono de gris claro como fondo */
-  }  
-  
+  }
+
   .sidebar h3 {
     font-size: 20px;
     color: #333;
     margin-bottom: 15px;
   }
-  
+
   .sidebar ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
   }
-  
+
   .sidebar li {
     margin-bottom: 10px;
   }
-  
+
   .sidebar a {
     text-decoration: none;
     color: #666;
   }
-  
+
   .sidebar a:hover {
     color: #333;
   }
-  
+
   .important-info {
     margin-top: 20px;
   }
-  
+
   .important-info h3 {
     font-size: 18px;
     color: #333;
     margin-bottom: 10px;
   }
-  
+
   .important-info p {
     font-size: 16px;
     color: #666;
   }
-  
+
   .course-image {
-    max-width: 100%;
+    width: 100%;
     height: auto;
     display: block;
     margin-bottom: 10px; /* Espacio entre las imágenes */

@@ -49,4 +49,10 @@ export class DatabaseService {
       this.baseUrl + '/cursos/' + id_curso
     );
   }
+
+  getContentFromACourseById(id_curso: number): Observable<any> {
+    return this.http.get<any>(
+      this.baseUrl + '/contenido/' + id_curso
+    );
+  }
 }
