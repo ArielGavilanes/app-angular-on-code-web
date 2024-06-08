@@ -6,17 +6,30 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #e5e3e3cd;
 }
+.title-container {
+  height: 40px;
+}
 
 .course-title {
+  height: 45px;
   margin-top: 10px;
   padding: 10px;
   font-size: 18px;
   border-bottom: 1px solid #ddd;
+  width: 300px;
+}
+
+a {
+  overflow: hidden;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;  
 }
 
 .course-description {
   padding: 10px;
   font-size: 14px;
+  text-align: center;
 }
 
 .course-details {

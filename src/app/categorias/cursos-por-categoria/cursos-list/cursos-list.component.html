@@ -3,14 +3,13 @@
 </div> -->
 
 <div class="course-container" *ngFor="let curso of cursos">
-  <h1 class="course-title">{{ curso.nombre_curso }}</h1>
-  <p class="course-description">{{ curso.descripcion }}</p>
-  <p class="course-details">
-    <span>ID Curso: {{ curso.id_curso }}</span>
-    <span> | </span>
-    <span>ID Creador: {{ curso.id_creador }}</span>
-    <span> | </span>
-    <span>ID Categoría: {{ curso.id_categoria }}</span>
+  <div class="title-container">
+    <a class="course-title">{{ curso.nombre_curso }}</a>
+  </div>
+  
+  <p class="course-description">
+  <img src=" {{ curso.portada_curso }} " alt="Portada del curso">
+    <p class="course-description">{{ curso.descripcion_curso }}
   </p>
   <p class="course-premium" [ngClass]="{ 'premium': curso.premium_curso, 'free': !curso.premium_curso }">
     {{ curso.premium_curso ? "Premium" : "Gratuito" }}
