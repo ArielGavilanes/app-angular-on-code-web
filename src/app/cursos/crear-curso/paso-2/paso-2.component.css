@@ -1,0 +1,31 @@
+.p-checkbox {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.p-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.p-checkbox .p-checkbox-box {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #ffffff; /* Fondo blanco */
+  border: 1px solid #000000; /* Borde negro */
+  border-radius: 0.5rem; /* Bordes redondeados */
+  position: relative; /* Añadido */
+}
+
+.p-checkbox input:checked + .p-checkbox-box::before {
+  content: '\2714'; /* Código Unicode del símbolo de "visto" */
+  font-size: 1.2rem;
+  color: #000000; /* Color del "visto" */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centrar el "visto" */
+}

@@ -1,0 +1,60 @@
+<div class="bg-white-alpha-10 border-round text-white pt-1 pb-2 w-full">
+  <h2 class="pl-4 mb-0">Empecemos a crear tu curso!</h2>
+  <form class="grid p-4" [formGroup]="createCourseForm" (ngSubmit)="onSubmit()">
+    <div class="flex flex-column gap-2 col-12">
+      <label for="nombre_curso">Nombre de tu curso</label>
+      <input pInputText id="nombre_curso" formControlName="nombre_curso" />
+      <div
+        *ngIf="createCourseForm.controls['nombre_curso'].errors?.['required'] && formSubmitted"
+      >
+        <small style="color: red"> Este campo es obligatorio </small>
+      </div>
+      <!-- <div
+        *ngIf="createCourseForm.controls['nombre_curso'].errors?.['minlength'] && formSubmitted"
+      >
+        <small style="color: red">
+          Tu descripcion debe tener al menos 255 caracteres
+        </small>
+      </div> -->
+    </div>
+    <div class="flex flex-column gap-2 col-12">
+      <label for="descripcion_curso">Añade una descripcion</label>
+      <textarea
+        rows="5"
+        cols="30"
+        pInputTextarea
+        formControlName="descripcion_curso"
+      >
+      </textarea>
+      <div
+        *ngIf="createCourseForm.controls['descripcion_curso'].errors?.['required'] && formSubmitted"
+      >
+        <small style="color: red"> Este campo es obligatorio </small>
+      </div>
+    </div>
+    <div class="flex flex-column col-12">
+      <label for="id_rol">Categoria de tu curso</label>
+      <p-treeSelect
+        class="w-full text-black-alpha-90"
+        containerStyleClass="w-full"
+        [options]="categorias"
+        placeholder="Selecciona una categoria"
+        formControlName="id_categoria"
+      />
+      <div
+        *ngIf="createCourseForm.controls['id_categoria'].errors?.['required'] && formSubmitted"
+      >
+        <small style="color: red"> Este campo es obligatorio </small>
+      </div>
+      
+    </div>
+    <div class="mt-4">
+      <button
+        pButton
+        class="cursor-pointer border-round text-black-alpha-90 bg-white-alpha-30 text-xl p-3 w-11rem font-semibold align border-transparent justify-content-center"
+      >
+        Siguiente
+      </button>
+    </div>
+  </form>
+</div>

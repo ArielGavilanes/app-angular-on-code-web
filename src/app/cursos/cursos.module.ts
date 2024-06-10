@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { BusquedaCursoModule } from './busqueda-curso/busqueda-curso.module';
 import { EffectsModule } from '@ngrx/effects';
 import { SearchEffects } from '../state/effects/search.effects';
+import { CrearCursoModule } from './crear-curso/crear-curso.module';
 
 @NgModule({
   declarations: [CursosComponent],
@@ -17,6 +18,7 @@ import { SearchEffects } from '../state/effects/search.effects';
     CursoEspecificoModule,
     SharedModule,
     BusquedaCursoModule,
+    CrearCursoModule,
     // EffectsModule.forRoot([SearchEffects]),
   ],
 })

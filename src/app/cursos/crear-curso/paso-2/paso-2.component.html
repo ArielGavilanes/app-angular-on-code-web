@@ -1,0 +1,52 @@
+<div class="bg-white-alpha-10 border-round text-white p-4 w-full">
+  <h2 class="pl-4 mb-0">Elige un precio para tu curso (si quieres)</h2>
+  <div class="p-d-flex p-flex-row p-align-center pl-4 pt-4">
+    <label class="p-checkbox">
+      <input
+        type="checkbox"
+        [(ngModel)]="premium_curso"
+      />
+      <span class="p-checkbox-box"></span>
+    </label>
+    <!-- <label class="p-checkbox">
+      <input
+        type="checkbox"
+        [(ngModel)]="premium_curso"
+        (ngModelChange)="togglePrecioCursoControl()"
+      />
+      <span class="p-checkbox-box"></span>
+    </label> -->
+    <span class="ml-3 text-xl">Tu curso será de paga?</span>
+  </div>
+  <form class="grid p-4" [formGroup]="createCourseForm" (ngSubmit)="onSubmit()">
+    <div class="flex flex-column gap-2 col-12">
+      <label for="precio_curso">Elige un precio</label>
+      <p-inputNumber
+        inputId="currency-us"
+        mode="currency"
+        currency="USD"
+        locale="en-US"
+        formControlName="precio_curso"
+        [readonly]="!premium_curso"
+      />
+      <div
+        *ngIf="createCourseForm.controls['precio_curso'].errors?.['required'] && formSubmitted"
+      >
+        <small style="color: red"> Este campo es obligatorio </small>
+      </div>
+      <div
+        *ngIf="createCourseForm.get('precio_curso')?.errors?.['negativeNumber'] && formSubmitted"
+      >
+        <small style="color: red"> Ingrese un numero valido </small>
+      </div>
+    </div>
+    <div class="mt-4">
+      <button
+        pButton
+        class="cursor-pointer border-round text-black-alpha-90 bg-white-alpha-30 text-xl p-3 w-11rem font-semibold align border-transparent justify-content-center"
+      >
+        Siguiente
+      </button>
+    </div>
+  </form>
+</div>

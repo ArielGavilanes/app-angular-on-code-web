@@ -1,0 +1,31 @@
+<div class="bg-white-alpha-10 border-round text-white p-4 w-full">
+  <h2 class="pl-4 mb-0">Finalmente, escoge una portada</h2>
+  <p-fileUpload
+    name="portada_curso"
+    url="https://www.primefaces.org/cdn/api/upload.php"
+    [multiple]="false"
+    accept="image/*"
+    maxFileSize="1000000"
+    class="p-4"
+    (onUpload)="onUpload($event)"
+    chooseLabel="Escoger"
+    uploadLabel="Subir"
+    cancelLabel="Cancelar"
+  >
+    <ng-template pTemplate="content">
+      <div *ngIf="uploadedFile">
+        {{ uploadedFile.name }} - {{ uploadedFile.size }} bytes
+      </div>
+    </ng-template>
+  </p-fileUpload>
+  <div class="mt-4">
+    <button
+      [disabled]="!uploaded"
+      (click)="onSubmit()"
+      pButton
+      class="cursor-pointer border-round text-black-alpha-90 bg-white-alpha-30 text-xl p-3 w-11rem font-semibold align border-transparent justify-content-center"
+    >
+      Finalizar
+    </button>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+/* Cambia el color de fondo del círculo del paso actual */
+:host ::ng-deep .p-steps .p-steps-item.p-highlight .p-steps-number {
+  background: #3d3d3d;
+  color: #ffffff;
+}
+
+:host ::ng-deep .p-steps .p-steps-item .p-menuitem-link {
+  background: transparent;
+  transition: box-shadow 0.2s;
+  border-radius: 6px;
+}
+
+:host ::ng-deep .p-steps .p-steps-item.p-highlight .p-steps-title {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+
