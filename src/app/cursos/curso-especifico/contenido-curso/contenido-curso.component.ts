@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { TreeNode } from 'primeng/api';
 import { CertificacionService } from 'src/app/service/certificacion.service';
 
 @Component({
@@ -8,14 +10,105 @@ import { CertificacionService } from 'src/app/service/certificacion.service';
   styleUrls: ['./contenido-curso.component.css'],
 })
 export class ContenidoCursoComponent implements OnInit {
+  onUpload(event: any) {
+    if (event.files.length > 0) {
+      this.uploaded = true;
+      this.archivoSubidoNombre = event.files[0].name;
+
+      this.uploadedFile = event.files[0];
+      this.imagen_contenido = this.uploadedFile;
+    }
+  }
+  @Input() id_curso: any;
+  url_video: any | undefined;
+  texto: any | undefined;
+  imagen_contenido: any | undefined;
+
+  emitDataForCreateContent() {
+    this.formSubmitted = true;
+
+    this.dataForCreateContent.nombre_seccion_contenido = this.crearContenidoForm.get(
+      'nombre_seccion_contenido'
+    )?.value;
+
+    this.dataForCreateContent.descripcion_contenido = this.crearContenidoForm.get(
+      'descripcion_contenido'
+    )?.value;
+
+    this.dataForCreateContent.id_categoria =
+      this.crearContenidoForm.get('id_categoria')?.value.data;
+
+    this.url_video = this.crearContenidoForm.get('url_video')?.value;
+
+    this.texto = this.crearContenidoForm.get('texto')?.value;
+
+    if (this.texto || this.url_video || this.imagen_contenido) {
+      this.errorMessage = '';
+
+      if (this.url_video) {
+        this.dataForCreateContent.url_video_contenido = this.url_video;
+      }
+
+      if (this.texto) {
+        this.dataForCreateContent.texto_contenido = this.texto;
+      }
+
+      if (this.imagen_contenido) {
+        this.dataForCreateContent.imagen_contenido = this.imagen_contenido;
+      }
+
+      if (this.crearContenidoForm.valid) {
+        const data = {
+          ...this.dataForCreateContent,
+          id_curso: this.id_curso,
+        };
+
+        console.log('data', data);
+        const formData = new FormData();
+        for (const key in data) {
+          formData.append(key, data[key]);
+        }
+
+        this.emitirData.emit(data);
+      }
+    } else {
+      this.errorMessage = 'Este campo es obligatorio';
+    }
+  }
+
+  @Output() emitirData: EventEmitter<any> = new EventEmitter<any>();
+
+  dataForCreateContent: any = {};
+
+  errorMessage: string = '';
+
+  formSubmitted: boolean = false;
+
+  crearContenidoForm: FormGroup = new FormGroup({}); // FormGroup para el formulario
+
+  archivoSubidoNombre: string = '';
+
+  uploadedFile: any = null;
+
+  uploaded: boolean = false;
   constructor(
     private sanitizer: DomSanitizer,
-    private certificacionService: CertificacionService
-  ) {}
-
-  generarCertificado() {
-    return this.certificacionService.generarCertificado()
+    private certificacionService: CertificacionService,
+    private formBuilder: FormBuilder
+  ) {
+    this.crearContenidoForm = this.formBuilder.group({
+      nombre_seccion_contenido: ['', [Validators.required]],
+      descripcion_contenido: ['', [Validators.required]],
+      id_categoria: ['', [Validators.required]],
+      url_video: [''],
+      texto: [''],
+    });
   }
+
+  @Input() tiposContenido: TreeNode[] = [];
+  opcionSeleccionada: any | undefined;
+
+  generarCertificado() {}
   visible: boolean = false;
 
   @Input() contenidoDeCurso: any;
@@ -82,31 +175,8 @@ export class ContenidoCursoComponent implements OnInit {
     },
   ];
 
-  nodes: any[] | undefined;
-  selectedNodes: any[] | undefined;
-
   ngOnInit() {
-    this.nodes = [
-      {
-        label: 'Texto',
-        data: 'Texto',
-        icon: 'pi pi-file',
-      },
-      {
-        label: 'Imagen',
-        data: 'Imagen',
-        icon: 'pi pi-image',
-      },
-      {
-        label: 'Video',
-        data: 'Video',
-        icon: 'pi pi-video',
-      },
-    ];
-
-    this.selectedNodes = [];
-
-    console.log('contenido', this.contenidoDeCurso);
+    console.log('tipo en componente', this.tiposContenido);
   }
 }
 

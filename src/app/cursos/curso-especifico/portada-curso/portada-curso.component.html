@@ -1,4 +1,9 @@
 <div class="p-card udemy-cover">
+  <div *ngIf="id_rol === 2 && permission">
+    <button (click)="showDialog()" class="edit-button cursor-pointer">
+      <i class="pi pi-pencil"></i>
+    </button>
+  </div>
   <img
     [src]="getPortadaBase64(curso?.portada_curso)"
     alt="Curso de Angular"
@@ -9,7 +14,9 @@
     <h1>{{ curso?.nombre_curso }}</h1>
     <p>{{ curso?.descripcion_curso }}</p>
     <div class="author-details">
-      <p><strong>Creado por:</strong> {{ curso?.id_creador?.nombre_usuario }}</p>
+      <p>
+        <strong>Creado por:</strong> {{ curso?.id_creador?.nombre_usuario }}
+      </p>
     </div>
     <div *ngIf="curso?.precio_curso == 0; else precioCurso">
       <h1>Gratis</h1>
@@ -29,3 +36,86 @@
     </div>
   </div>
 </div>
+
+<p-dialog
+  header="Editar curso"
+  [modal]="true"
+  [(visible)]="visible"
+  [style]="{ width: '45rem', 'background-color': '#303030', color: '#ffffff' }"
+>
+  <span class="p-text-secondary block mb-5">Vamos a editar tu curso</span>
+  <form [formGroup]="editCourseForm" (ngSubmit)="emitDataForUpdateCourse()">
+    <div
+      class="flex align-items-center gap-3 mb-3"
+      [formGroup]="editCourseForm"
+    >
+      <label for="nombre_curso" class="font-semibold w-6rem"
+        >Actualizar nombre del curso</label
+      >
+      <input
+        pInputText
+        id="nombre_curso"
+        class="flex-auto"
+        autocomplete="off"
+        formControlName="nombre_curso"
+        [ngModel]="curso?.nombre_curso"
+      />
+      <div
+        *ngIf="editCourseForm.controls['nombre_curso'].errors?.['required'] && formSubmitted"
+      >
+        <small style="color: red"> Este campo es obligatorio </small>
+      </div>
+    </div>
+    <div class="flex align-items-center gap-3 mb-5">
+      <label for="descripcion_curso" class="font-semibold w-6rem"
+        >Actualizar descripcion del curso</label
+      >
+      <textarea
+        rows="5"
+        cols="60"
+        pInputTextarea
+        formControlName="descripcion_curso"
+        [ngModel]="curso?.descripcion_curso"
+      >
+      </textarea>
+      <div
+        *ngIf="editCourseForm.controls['descripcion_curso'].errors?.['required'] && formSubmitted"
+      >
+        <small style="color: red"> Este campo es obligatorio </small>
+      </div>
+    </div>
+
+    <div class="flex align-items-center gap-3 mb-5">
+      <label for="portada_curso" class="font-semibold w-6rem"
+        >Actualizar portada del curso</label
+      >
+      <div class="file-upload-container">
+        <p-fileUpload
+          mode="basic"
+          chooseLabel="Elegir imagen"
+          chooseIcon="pi pi-upload"
+          name="portada_curso"
+          url="http://localhost:3000/api/cursos/upload/image/"
+          accept="image/*"
+          maxFileSize="1000000"
+          (onUpload)="onUpload($event)"
+          [style]="{ width: '15rem' }"
+          [auto]="true"
+        ></p-fileUpload>
+
+        <div *ngIf="archivoSubidoNombre" class="uploaded-file-name">
+          {{ archivoSubidoNombre }}
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-content-end gap-2">
+      <button
+        pButton
+        label="Cancelar"
+        severity="secondary"
+        (click)="visible = false"
+      ></button>
+      <button pButton label="Guardar"></button>
+    </div>
+  </form>
+</p-dialog>

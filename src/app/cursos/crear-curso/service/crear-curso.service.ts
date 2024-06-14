@@ -19,7 +19,6 @@ export class CrearCursoService {
   }
 
   createCourse() {
-    console.log(this.curso);
     const formData = new FormData();
     for (const key in this.curso) {
       formData.append(key, this.curso[key]);

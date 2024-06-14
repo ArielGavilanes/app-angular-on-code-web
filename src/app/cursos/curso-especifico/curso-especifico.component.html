@@ -1,6 +1,16 @@
 <div class="bg-black-alpha-90 p-3 mt-0">
-  <app-portada-curso [curso]="curso"></app-portada-curso>
+  <app-portada-curso
+    [curso]="curso"
+    [permission]="permission"
+    [id_rol]="id_rol"
+    (emitirData)="updateCourse($event)"
+  >
+    ></app-portada-curso
+  >
   <app-contenido-curso
     [contenidoDeCurso]="contenidoDeCurso"
+    [tiposContenido]="tiposContenido"
+    [id_curso]="id_curso"
+    (emitirData)="createContent($event)"
   ></app-contenido-curso>
 </div>

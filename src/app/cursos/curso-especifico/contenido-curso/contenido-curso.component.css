@@ -1,78 +1,111 @@
 .container {
-    display: flex;
-  }
+  display: flex;
+}
 
-  @import "primeicons/primeicons.css";
+@import "primeicons/primeicons.css";
 
-  .center-button {
-    display: flex;
-    justify-content: center;
-  }
+.center-button {
+  display: flex;
+  justify-content: center;
+}
 
-  .main-content {
-    flex: 1;
-    padding-right: 20px;
-  }
+.main-content {
+  flex: 1;
+  padding-right: 20px;
+}
 
-  .sidebar {
-    border: 1px solid #ccc; /* Añade un borde gris */
-    border-radius: 10px; /* Hace que los bordes sean más redondeados */
-    padding: 20px; /* Añade espacio interno alrededor del contenido */
-    margin-top: 20px; /* Agrega espacio por encima del contenido */
-    max-width: 300px; /* Establece el ancho máximo de la barra lateral */
-    background-color: #f2f2f2; /* Establece un tono de gris claro como fondo */
-  }
+.sidebar {
+  border: 1px solid #303030; /* Añade un borde gris */
+  border-radius: 10px; /* Hace que los bordes sean más redondeados */
+  padding: 20px; /* Añade espacio interno alrededor del contenido */
+  margin-top: 20px; /* Agrega espacio por encima del contenido */
+  max-width: 300px; /* Establece el ancho máximo de la barra lateral */
+  background-color: #303030; /* Establece un tono de gris claro como fondo */
+  color: white;
+}
 
-  .sidebar h3 {
-    font-size: 20px;
-    color: #333;
-    margin-bottom: 15px;
-  }
+.sidebar h3 {
+  font-size: 20px;
+  color: #fffcfc;
+  margin-bottom: 15px;
+}
 
-  .sidebar ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
 
-  .sidebar li {
-    margin-bottom: 10px;
-  }
+.sidebar li {
+  margin-bottom: 10px;
+}
 
-  .sidebar a {
-    text-decoration: none;
-    color: #666;
-  }
+.sidebar a {
+  text-decoration: none;
+  color: #ffffff;
+}
 
-  .sidebar a:hover {
-    color: #333;
-  }
+.sidebar a:hover {
+  color: #333;
+}
 
-  .important-info {
-    margin-top: 20px;
-  }
+.important-info {
+  margin-top: 20px;
+}
 
-  .important-info h3 {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 10px;
-  }
+.important-info h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
 
-  .important-info p {
-    font-size: 16px;
-    color: #666;
-  }
+.important-info p {
+  font-size: 16px;
+  color: #666;
+}
 
-  .course-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin-bottom: 10px; /* Espacio entre las imágenes */
-  }
-  .section {
-    border: 1px solid #ccc; /* Añade un borde gris */
-    border-radius: 10px; /* Hace que los bordes sean más redondeados */
-    padding: 20px; /* Añade un espacio interno alrededor del contenido */
-    margin-top: 20px; /* Agrega espacio por encima del contenido */
-    background-color: #f2f2f2; /* Establece un fondo gris */
-  }
+.course-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 10px; /* Espacio entre las imágenes */
+}
+.section {
+  border: 1px solid #303030; /* Añade un borde gris */
+  border-radius: 10px; /* Hace que los bordes sean más redondeados */
+  padding: 20px; /* Añade un espacio interno alrededor del contenido */
+  margin-top: 20px; /* Agrega espacio por encima del contenido */
+  background-color: #303030; /* Establece un fondo gris */
+  color: white;
+}
+
+:host ::ng-deep .p-dialog .p-dialog-content {
+  background: #303030;
+  color: #ffffff;
+  padding: 0 1.5rem 2rem 1.5rem;
+}
+
+:host ::ng-deep .p-dialog .p-dialog-header {
+  border-bottom: 0 none;
+  background: #303030;
+  color: #ffffff;
+  padding: 1.5rem;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+}
+
+:host ::ng-deep .p-text-secondary {
+  color: #ffffff;
+}
+
+:host ::ng-deep .p-button {
+  color: #000000;
+  background: #6f6f6f;
+  border: 1px solid #6f6f6f;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+  border-radius: 6px;
+  outline-color: transparent;
+}

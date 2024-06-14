@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,7 @@ import { AuthEffects } from './state/effects/auth.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { CategoriasModule } from './categorias/categorias.module';
 import { SearchEffects } from './state/effects/search.effects';
+import { AuthInterceptor } from './auth/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +25,13 @@ import { SearchEffects } from './state/effects/search.effects';
     CategoriasModule,
     EffectsModule.forRoot([AuthEffects, SearchEffects]),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

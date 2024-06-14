@@ -50,64 +50,132 @@
         header="Crear Contenido"
         [modal]="true"
         [(visible)]="visible"
-        [style]="{ width: '34rem' }"
+        [style]="{ maxWidth: '100%', width: '34rem' }"
+        [contentStyle]="{ overflow: 'auto' }"
       >
         <span class="p-text-secondary block mb-5">Llena los campos</span>
-        <div class="flex align-items-center gap-3 mb-3">
-          <label for="text-content" class="font-semibold w-6rem"
-            >Sección:</label
-          >
-          <input
-            pInputText
-            id="text-content"
-            class="flex-auto"
-            autocomplete="off"
-          />
-        </div>
+        <form
+          [formGroup]="crearContenidoForm"
+          (ngSubmit)="emitDataForCreateContent()"
+        >
+          <div class="flex align-items-center gap-3 mb-3">
+            <label class="font-semibold w-6rem">Nombre de esta seccion:</label>
+            <input
+              pInputText
+              formControlName="nombre_seccion_contenido"
+              id="url-video"
+              class="flex-auto"
+              autocomplete="off"
+            />
+            <div
+              *ngIf="crearContenidoForm.controls['nombre_seccion_contenido'].errors?.['required'] && formSubmitted"
+            >
+              <small style="color: red"> Este campo es obligatorio </small>
+            </div>
+          </div>
+          <div class="flex align-items-center gap-3 mb-3">
+            <label class="font-semibold w-6rem"
+              >Descripcion del contenido:</label
+            >
+            <textarea
+              rows="5"
+              cols="60"
+              pInputTextarea
+              formControlName="descripcion_contenido"
+            >
+            </textarea>
+            <div
+              *ngIf="crearContenidoForm.controls['descripcion_contenido'].errors?.['required'] && formSubmitted"
+            >
+              <small style="color: red"> Este campo es obligatorio </small>
+            </div>
+          </div>
+          <div class="flex align-items-center gap-3 mb-3">
+            <label class="font-semibold w-6rem">Opciones:</label>
+            <p-treeSelect
+              class="w-full text-black-alpha-90"
+              containerStyleClass="w-full"
+              [options]="tiposContenido"
+              placeholder="Selecciona tipo de contenido"
+              formControlName="id_categoria"
+              [(ngModel)]="opcionSeleccionada"
+            />
+            <div
+              *ngIf="crearContenidoForm.controls['id_categoria'].errors?.['required'] && formSubmitted"
+            >
+              <small style="color: red"> Este campo es obligatorio </small>
+            </div>
+          </div>
 
-        <div class="flex align-items-center gap-3 mb-3">
-          <label for="text-content" class="font-semibold w-6rem"
-            >Opciones:</label
+          <div
+            *ngIf="opcionSeleccionada?.data === 2"
+            class="flex align-items-center gap-3 mb-3"
           >
-          <p-treeSelect
-            class="md:w-20rem w-full"
-            containerStyleClass="w-full"
-            [(ngModel)]="selectedNodes"
-            [options]="nodes"
-            placeholder="Select Item"
-            class="flex-auto"
-          ></p-treeSelect>
-        </div>
+            <label class="font-semibold w-6rem">URL de video:</label>
+            <input
+              pInputText
+              formControlName="url_video"
+              id="url-video"
+              class="flex-auto"
+              autocomplete="off"
+            />
+          </div>
 
-        <div class="flex align-items-center gap-3 mb-3">
-          <label for="text-content" class="font-semibold w-6rem"
-            >URL de video:</label
+          <div
+            *ngIf="opcionSeleccionada?.data === 3"
+            class="flex align-items-center gap-3 mb-3"
           >
-          <input
-            pInputText
-            id="text-content"
-            class="flex-auto"
-            autocomplete="off"
-          />
-        </div>
-        <div class="flex align-items-center gap-3 mb-3">
-          <label for="text-content" class="font-semibold w-6rem">Texto:</label>
-          <input
-            pInputText
-            id="text-content"
-            class="flex-auto"
-            autocomplete="off"
-          />
-        </div>
+            <label class="font-semibold w-6rem">Texto:</label>
+            <input
+              pInputText
+              formControlName="texto"
+              id="texto"
+              class="flex-auto"
+              autocomplete="off"
+            />
+          </div>
 
-        <div class="flex justify-content-end gap-2">
-          <p-button
-            label="Cancelar"
-            severity="secondary"
-            (click)="visible = false"
-          ></p-button>
-          <p-button label="Guardar" (click)="visible = false"></p-button>
-        </div>
+          <div
+            *ngIf="opcionSeleccionada?.data === 1"
+            class="flex align-items-center gap-3 mb-5"
+          >
+            <label class="font-semibold w-6rem">Selecciona la imagen</label>
+            <div class="file-upload-container">
+              <p-fileUpload
+                mode="basic"
+                chooseLabel="Elegir imagen"
+                chooseIcon="pi pi-upload"
+                name="portada_curso"
+                url="http://localhost:3000/api/cursos/upload/image/"
+                accept="image/*"
+                maxFileSize="1000000"
+                (onUpload)="onUpload($event)"
+                [style]="{ width: '23.8rem' }"
+                [auto]="true"
+              ></p-fileUpload>
+              <div *ngIf="archivoSubidoNombre" class="uploaded-file-name">
+                {{ archivoSubidoNombre }}
+              </div>
+            </div>
+          </div>
+          <div
+            *ngIf="!opcionSeleccionada"
+            class="flex align-items-center gap-3 mb-5"
+          >
+            <p>Debes seleccionar un contenido</p>
+          </div>
+          <div *ngIf="errorMessage && formSubmitted">
+            <small style="color: red"> Este campo es obligatorio </small>
+          </div>
+          <div class="flex justify-content-end gap-2">
+            <p-button
+              label="Cancelar"
+              severity="secondary"
+              (click)="visible = false"
+            ></p-button>
+            <p-button label="Guardar" type="Submit"></p-button>
+          </div>
+        </form>
       </p-dialog>
     </div>
   </div>
@@ -127,4 +195,8 @@
     </div>
   </div>
 </div>
-<p-button icon="pi pi-iconName" label="Generar certificado" (onClick)="generarCertificado()"></p-button>
+<p-button
+  icon="pi pi-iconName"
+  label="Generar certificado"
+  (onClick)="generarCertificado()"
+></p-button>

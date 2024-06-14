@@ -8,7 +8,7 @@ import { CategoriasModule } from './categorias/categorias.module';
 import { UsersModule } from './users/users.module';
 import { CursoEspecificoModule } from './cursos/curso-especifico/curso-especifico.module';
 
-const routes: Routes = [{ path: '', redirectTo: '/login', pathMatch: 'full' }];
+const routes: Routes = [{ path: 'step-1', redirectTo: '/login', pathMatch: 'full' }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

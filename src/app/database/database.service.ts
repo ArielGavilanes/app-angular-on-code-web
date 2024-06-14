@@ -55,4 +55,30 @@ export class DatabaseService {
   createCourse(curso: any): Observable<any> {
     return this.http.post<any>(this.baseUrl + '/cursos/', curso);
   }
+
+  getProfile(): Observable<any> {
+    return this.http.get<any>(this.baseUrl + '/auth/profile/');
+  }
+
+  verifyIfCreatorHavePermissions(id_curso: number): Observable<boolean> {
+    return this.http.get<boolean>(this.baseUrl + '/cursos/access/' + id_curso);
+  }
+
+  verifyIfAStudentIsMatriculatedIn(id_curso: number): Observable<boolean> {
+    return this.http.get<boolean>(
+      this.baseUrl + '/matriculas/access/' + id_curso
+    );
+  }
+
+  updateCourse(id_curso: number, curso: any): Observable<any> {
+    return this.http.put<any>(this.baseUrl + '/cursos/' + id_curso, curso);
+  }
+
+  getAllTiposContenido(): Observable<any> {
+    return this.http.get<any>(this.baseUrl + '/tipo_contenido/');
+  }
+
+  createContent(content: any) : Observable<any> {
+    return this.http.post<any>(this.baseUrl + '/contenido/', content);
+  }
 }

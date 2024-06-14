@@ -9,14 +9,14 @@ import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { TreeSelectModule } from 'primeng/treeselect';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FileUploadModule } from 'primeng/fileupload';
 
 @NgModule({
   declarations: [
     CursoEspecificoComponent,
     PortadaCursoComponent,
-    ContenidoCursoComponent
+    ContenidoCursoComponent,
   ],
   imports: [
     CommonModule,
@@ -26,7 +26,9 @@ import { FormsModule } from '@angular/forms';
     InputTextModule,
     InputTextareaModule,
     TreeSelectModule,
-    FormsModule
-  ]
+    FormsModule,
+    ReactiveFormsModule,
+    FileUploadModule,
+  ],
 })
-export class CursoEspecificoModule { }
+export class CursoEspecificoModule {}
