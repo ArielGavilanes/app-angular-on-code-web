@@ -1,5 +1,11 @@
 <app-navbar></app-navbar>
 <div class="bg-black-alpha-90 h-screen">
-  <profile-banner></profile-banner>
-  <profile-cursos></profile-cursos>
+  <profile-banner [user]="user"></profile-banner>
+  <!-- <profile-banner></profile-banner> -->
+  <profile-cursos
+    [id_rol]="id_rol"
+    [cursos]="cursos"
+    [barChartData]="barChartData"
+    [barChartOptions]="barChartOptions"
+  ></profile-cursos>
 </div>

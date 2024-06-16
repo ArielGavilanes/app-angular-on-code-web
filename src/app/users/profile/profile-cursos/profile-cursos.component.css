@@ -1,26 +1,54 @@
-.profile-cursos {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #7e2222;
-    border-radius: 8px;
-    background-color: #191919;
-  }
-  
-  .profile-cursos h2 {
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
-  .profile-cursos ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .profile-cursos li {
-    margin: 5px 0;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #fff;
-  }
-  
+.tab-container {
+  background-color: #191919;
+}
+
+:host ::ng-deep .p-tabview .p-tabview-nav {
+  background: #191919;
+  border: 1px solid white;
+  border-width: 0 0 2px 0;
+}
+
+:host ::ng-deep .p-tabview-nav {
+  display: inline-flex;
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  flex: 1 1 auto;
+  /* justify-content: center;
+  align-items: center; */
+}
+
+:host ::ng-deep .p-tabview .p-tabview-nav li .p-tabview-nav-link {
+  background: #303030;
+  color: #ffffff;
+}
+
+:host ::ng-deep .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+  border-color: #191919;
+}
+
+:host ::ng-deep .p-tabview .p-tabview-panels {
+  background: #303030;
+  padding: 1.25rem;
+  border: 0 none;
+  color: white;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+:host ::ng-deep .p-dataview .p-dataview-content {
+  background: #191919;
+  color: #ffffff;
+  border: 0 none;
+  padding: 0;
+  border-radius: 6px;
+}
+
+:host ::ng-deep .p-paginator {
+  margin-top: 1em;
+  background: #191919;
+  border-width: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}

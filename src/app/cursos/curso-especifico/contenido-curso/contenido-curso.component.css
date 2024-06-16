@@ -109,3 +109,13 @@
   border-radius: 6px;
   outline-color: transparent;
 }
+
+:host ::ng-deep .p-dialog .p-dialog-footer {
+  border-top: 0 none;
+  background: #303030;
+  color: #fff;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  text-align: right;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+}

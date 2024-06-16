@@ -78,7 +78,18 @@ export class DatabaseService {
     return this.http.get<any>(this.baseUrl + '/tipo_contenido/');
   }
 
-  createContent(content: any) : Observable<any> {
+  createContent(content: any): Observable<any> {
     return this.http.post<any>(this.baseUrl + '/contenido/', content);
+  }
+
+  createMatricula(matricula: any): Observable<any> {
+    return this.http.post<any>(this.baseUrl + '/matriculas/', matricula);
+  }
+  getCoursesWhereStudentsAreMatriculatedIn(): Observable<any> {
+    return this.http.get<any>(this.baseUrl + '/matriculas/cursos');
+  }
+
+  getMatriculeOfTheLast3Days(): Observable<any> {
+    return this.http.get<any>(this.baseUrl + '/matriculas/estadistica');
   }
 }

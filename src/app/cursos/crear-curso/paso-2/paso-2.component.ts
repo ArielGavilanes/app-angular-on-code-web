@@ -31,7 +31,10 @@ export class Paso2Component {
 
   data: any = {};
 
+  con_certificacion: boolean = false;
+
   onSubmit() {
+    this.data.con_certificacion = this.con_certificacion;
     this.data.premium_curso = this.premium_curso;
     this.data.precio_curso = this.createCourseForm.get('precio_curso')?.value;
     this.formSubmitted = true;

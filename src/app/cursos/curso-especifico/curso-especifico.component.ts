@@ -28,6 +28,16 @@ export class CursoEspecificoComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
+  createMatricula(matricula: any) {
+    return this.cursosService.createMatricula(matricula).subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
   getCourseById(id_curso: number) {
     return this.cursosService.getCourseById(id_curso).subscribe(
       (response) => {
@@ -83,7 +93,7 @@ export class CursoEspecificoComponent implements OnInit {
   createContent(content: any) {
     const finallyContent = {
       ...content,
-      ...this.id_curso_object
+      ...this.id_curso_object,
     };
     console.log('data', finallyContent);
     const formData = new FormData();

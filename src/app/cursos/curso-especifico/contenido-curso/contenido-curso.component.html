@@ -1,5 +1,8 @@
 <div class="container">
-  <div class="main-content">
+  <div
+    class="main-content"
+    *ngIf="(id_rol === 2 && permission) || (id_rol === 1 && permission)"
+  >
     <div
       *ngFor="let contenido of contenidoDeCurso; let i = index"
       class="section"
@@ -37,7 +40,7 @@
       </div>
     </div>
 
-    <div class="section center-button">
+    <div class="section center-button" *ngIf="id_rol === 2 && permission">
       <p-button
         (click)="showDialog()"
         label="Agregar más contenido"
@@ -179,23 +182,46 @@
       </p-dialog>
     </div>
   </div>
+
+  <div class="main-content" *ngIf="id_rol === 2 && !permission">
+    <div class="section">
+      <h1>
+        Debes tener una cuenta de estudiante para ver el contenido de este curso
+      </h1>
+    </div>
+  </div>
+
+  <div class="main-content" *ngIf="id_rol === 1 && !permission">
+    <div class="section">
+      <h1>Debes comprar este curso para ver su contenido</h1>
+    </div>
+    <div class="section center-button">
+      <p-confirmDialog></p-confirmDialog>
+      <p-button
+        (click)="comprarCurso($event)"
+        label="Comprar por {{ curso.precio_curso }}"
+        icon="pi pi-dollar"
+        iconPos="right"
+        severity="contrast"
+      ></p-button>
+    </div>
+  </div>
+
   <div class="sidebar">
     <h3>Contenido del Curso</h3>
     <ul>
-      <li *ngFor="let section of sections">
-        <a href="#{{ section.title }}">{{ section.title }}</a>
+      <li *ngFor="let contenido of contenidoDeCurso; let i = index">
+        <p>Seccion {{ i + 1 }}: {{ contenido.nombre_seccion_contenido }}</p>
       </li>
     </ul>
-    <div class="important-info">
-      <h3>Información Importante</h3>
-      <p>
-        Aquí puedes agregar información adicional sobre el curso, como
-        requisitos, objetivos, etc.
-      </p>
-    </div>
   </div>
 </div>
 <p-button
+  *ngIf="
+    (id_rol === 1 && permission && curso.con_certificacion) ||
+    (id_rol === 2 && permission && curso.con_certificacion)
+  "
+  styleClass="mt-4"
   icon="pi pi-iconName"
   label="Generar certificado"
   (onClick)="generarCertificado()"

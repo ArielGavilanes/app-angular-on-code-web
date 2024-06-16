@@ -72,14 +72,35 @@
             <i class="pi pi-search"></i>
           </span>
         </div>
-        <div [routerLink]="['/profile']" class="cursor-pointer">
+        <div
+          [routerLink]="['/profile']"
+          class="cursor-pointer"
+          *ngIf="
+            getPortadaBase64(user?.userData?.foto_perfil) !=
+            'data:image;base64,////'
+          "
+        >
           <p-avatar
-            label="V"
-            styleClass="mr-2"
             size="large"
-            [style]="{ 'background-color': '#ece9fc', color: '#2a1261' }"
+            styleClass="mr-2 "
             shape="circle"
+            [image]="getPortadaBase64(user?.userData?.foto_perfil)"
           />
+        </div>
+        <div
+          [routerLink]="['/profile']"
+          class="cursor-pointer"
+          *ngIf="
+            getPortadaBase64(user?.userData?.foto_perfil) ==
+            'data:image;base64,////'
+          "
+        >
+          <p-avatar
+            size="large"
+            styleClass="mr-2"
+            shape="circle"
+            image="https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg"
+          ></p-avatar>
         </div>
       </div>
     </ng-template>

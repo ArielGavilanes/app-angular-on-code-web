@@ -3,14 +3,16 @@ import { DatabaseService } from '../database/database.service';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SharedService {
-
-  constructor(private databaseService: DatabaseService) { }
+  constructor(private databaseService: DatabaseService) {}
 
   getAllCategories(): Observable<any> {
-    return this.databaseService.getAllCategories()
+    return this.databaseService.getAllCategories();
   }
 
+  getProfile(): Observable<any> {
+    return this.databaseService.getProfile();
+  }
 }

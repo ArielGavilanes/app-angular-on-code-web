@@ -4,8 +4,11 @@ import { ProfileBannerComponent } from './profile-banner/profile-banner.componen
 import { ProfileCursosComponent } from './profile-cursos/profile-cursos.component';
 import { ProfileComponent } from './profile.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { CarouselModule } from 'primeng/carousel';
-
+import { TabViewModule } from 'primeng/tabview';
+import { ButtonModule } from 'primeng/button';
+import { DataViewModule } from 'primeng/dataview';
+import { RouterModule } from '@angular/router';
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,11 @@ import { CarouselModule } from 'primeng/carousel';
   imports: [
     CommonModule,
     SharedModule,
-    CarouselModule
-  ]
+    TabViewModule,
+    ButtonModule,
+    DataViewModule,
+    RouterModule,
+    ChartModule
+  ],
 })
-export class ProfileModule { }
+export class ProfileModule {}

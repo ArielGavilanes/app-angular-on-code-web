@@ -2,10 +2,7 @@
   <h2 class="pl-4 mb-0">Elige un precio para tu curso (si quieres)</h2>
   <div class="p-d-flex p-flex-row p-align-center pl-4 pt-4">
     <label class="p-checkbox">
-      <input
-        type="checkbox"
-        [(ngModel)]="premium_curso"
-      />
+      <input type="checkbox" [(ngModel)]="premium_curso" />
       <span class="p-checkbox-box"></span>
     </label>
     <!-- <label class="p-checkbox">
@@ -17,6 +14,22 @@
       <span class="p-checkbox-box"></span>
     </label> -->
     <span class="ml-3 text-xl">Tu curso será de paga?</span>
+  </div>
+  <h2 class="pl-4 mb-0">Certificacion</h2>
+  <div class="p-d-flex p-flex-row p-align-center pl-4 pt-4">
+    <label class="p-checkbox">
+      <input type="checkbox" [(ngModel)]="con_certificacion" />
+      <span class="p-checkbox-box"></span>
+    </label>
+    <!-- <label class="p-checkbox">
+      <input
+        type="checkbox"
+        [(ngModel)]="premium_curso"
+        (ngModelChange)="togglePrecioCursoControl()"
+      />
+      <span class="p-checkbox-box"></span>
+    </label> -->
+    <span class="ml-3 text-xl">Tu curso tendra una certificacion?</span>
   </div>
   <form class="grid p-4" [formGroup]="createCourseForm" (ngSubmit)="onSubmit()">
     <div class="flex flex-column gap-2 col-12">

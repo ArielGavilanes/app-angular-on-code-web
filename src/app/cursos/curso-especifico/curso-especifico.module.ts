@@ -11,6 +11,8 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { TreeSelectModule } from 'primeng/treeselect';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FileUploadModule } from 'primeng/fileupload';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { FileUploadModule } from 'primeng/fileupload';
     FormsModule,
     ReactiveFormsModule,
     FileUploadModule,
+    ConfirmDialogModule,
   ],
+  providers: [ConfirmationService],
 })
 export class CursoEspecificoModule {}

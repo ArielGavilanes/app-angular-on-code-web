@@ -40,7 +40,11 @@ export class CursosService {
     return this.databaseService.getAllTiposContenido();
   }
 
-  createContent(content: any) : Observable<any> {
-    return this.databaseService.createContent(content)
+  createContent(content: any): Observable<any> {
+    return this.databaseService.createContent(content);
+  }
+
+  createMatricula(matricula: any): Observable<any> {
+    return this.databaseService.createMatricula(matricula);
   }
 }

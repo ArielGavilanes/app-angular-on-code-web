@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { TreeNode } from 'primeng/api';
+import { ConfirmationService, TreeNode } from 'primeng/api';
 import { CertificacionService } from 'src/app/service/certificacion.service';
 
 @Component({
@@ -10,6 +10,10 @@ import { CertificacionService } from 'src/app/service/certificacion.service';
   styleUrls: ['./contenido-curso.component.css'],
 })
 export class ContenidoCursoComponent implements OnInit {
+  @Input() id_rol: number | null = 0;
+  @Input() curso: any;
+
+  @Input() permission: boolean = false;
   onUpload(event: any) {
     if (event.files.length > 0) {
       this.uploaded = true;
@@ -27,13 +31,11 @@ export class ContenidoCursoComponent implements OnInit {
   emitDataForCreateContent() {
     this.formSubmitted = true;
 
-    this.dataForCreateContent.nombre_seccion_contenido = this.crearContenidoForm.get(
-      'nombre_seccion_contenido'
-    )?.value;
+    this.dataForCreateContent.nombre_seccion_contenido =
+      this.crearContenidoForm.get('nombre_seccion_contenido')?.value;
 
-    this.dataForCreateContent.descripcion_contenido = this.crearContenidoForm.get(
-      'descripcion_contenido'
-    )?.value;
+    this.dataForCreateContent.descripcion_contenido =
+      this.crearContenidoForm.get('descripcion_contenido')?.value;
 
     this.dataForCreateContent.id_categoria =
       this.crearContenidoForm.get('id_categoria')?.value.data;
@@ -63,7 +65,6 @@ export class ContenidoCursoComponent implements OnInit {
           id_curso: this.id_curso,
         };
 
-        console.log('data', data);
         const formData = new FormData();
         for (const key in data) {
           formData.append(key, data[key]);
@@ -94,7 +95,8 @@ export class ContenidoCursoComponent implements OnInit {
   constructor(
     private sanitizer: DomSanitizer,
     private certificacionService: CertificacionService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private confirmationService: ConfirmationService
   ) {
     this.crearContenidoForm = this.formBuilder.group({
       nombre_seccion_contenido: ['', [Validators.required]],
@@ -108,13 +110,36 @@ export class ContenidoCursoComponent implements OnInit {
   @Input() tiposContenido: TreeNode[] = [];
   opcionSeleccionada: any | undefined;
 
-  generarCertificado() {}
+  generarCertificado() {
+    return this.certificacionService.generarCertificado();
+  }
   visible: boolean = false;
 
   @Input() contenidoDeCurso: any;
 
+  @Output() emitirDataParaMatricula: EventEmitter<any> =
+    new EventEmitter<any>();
+
   showDialog() {
     this.visible = true;
+  }
+
+  matricula: any = {};
+  comprarCurso(event: Event) {
+    this.confirmationService.confirm({
+      message: '¿Comprar este curso?',
+      header: 'Confirmación',
+      acceptLabel: 'Sí',
+      rejectLabel: 'No',
+      icon: 'pi pi-exclamation-circle',
+      accept: () => {
+        this.matricula = { id_curso: this.curso.id_curso };
+        this.emitirDataParaMatricula.emit(this.matricula);
+      },
+      reject: () => {
+        console.log('Compra cancelada');
+      },
+    });
   }
 
   getPortadaBase64(portadaCurso: any): string {

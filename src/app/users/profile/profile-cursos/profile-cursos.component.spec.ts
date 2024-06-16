@@ -1,17 +1,21 @@
-import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-@Component({
-  selector: 'profile-cursos',
-  templateUrl: './profile-cursos.component.html',
-  styleUrls: ['./profile-cursos.component.css']
-})
-export class ProfileCursosComponent {
-  cursos: string[] = [
-    'Curso de Angular',
-    'Curso de TypeScript',
-    'Curso de CSS Avanzado',
-    'Curso de Desarrollo Web',
-    'Curso de React'
-  ];
-products: any;
-}
+import { ProfileCursosComponent } from './profile-cursos.component';
+
+describe('ProfileCursosComponent', () => {
+  let component: ProfileCursosComponent;
+  let fixture: ComponentFixture<ProfileCursosComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [ProfileCursosComponent]
+    });
+    fixture = TestBed.createComponent(ProfileCursosComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

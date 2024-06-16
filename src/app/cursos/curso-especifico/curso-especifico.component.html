@@ -8,9 +8,13 @@
     ></app-portada-curso
   >
   <app-contenido-curso
+    (emitirDataParaMatricula)="createMatricula($event)"
+    [curso]="curso"
     [contenidoDeCurso]="contenidoDeCurso"
     [tiposContenido]="tiposContenido"
     [id_curso]="id_curso"
+    [permission]="permission"
+    [id_rol]="id_rol"
     (emitirData)="createContent($event)"
   ></app-contenido-curso>
 </div>

@@ -57,10 +57,17 @@ export class PortadaCursoComponent implements OnInit {
     this.dataForUpdateCourse.descripcion_curso =
       this.editCourseForm.get('descripcion_curso')?.value;
 
-    this.formSubmitted = true;
+    const formData = new FormData();
+    for (const key in this.dataForUpdateCourse) {
+      formData.append(key, this.dataForUpdateCourse[key]);
+    }
+    const data = {
+      formData,
+      id_curso: this.curso.id_curso,
+    };
 
     if (this.editCourseForm.valid) {
-      this.emitirData.emit(this.editCourseForm);
+      this.emitirData.emit(data);
     }
   }
 

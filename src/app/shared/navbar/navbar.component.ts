@@ -12,9 +12,20 @@ export class NavbarComponent implements OnInit {
   items: MenuItem[] = [];
 
   query_curso: string = '';
-  constructor(private sharedService: SharedService,
-    private router:Router
-  ) {}
+  constructor(private sharedService: SharedService, private router: Router) {}
+
+  getProfile() {
+    return this.sharedService.getProfile().subscribe(
+      (response) => {
+        this.user = response;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  user: any = {};
 
   getAllCategories() {
     this.sharedService.getAllCategories().subscribe(
@@ -44,11 +55,22 @@ export class NavbarComponent implements OnInit {
   }
 
   busquedaCurso() {
-    if(this.query_curso) {
-      this.router.navigate(['/cursos'], { queryParams: { curso_nombre: this.query_curso } });
+    if (this.query_curso) {
+      this.router.navigate(['/cursos'], {
+        queryParams: { curso_nombre: this.query_curso },
+      });
     }
   }
+
+  getPortadaBase64(portadaCurso: any): string {
+    const buffer = portadaCurso?.data;
+    const array = Array.from(new Uint8Array(buffer));
+    const binary = array.map((byte) => String.fromCharCode(byte)).join('');
+    return 'data:image;base64,' + btoa(binary);
+  }
+
   ngOnInit(): void {
     this.getAllCategories();
+    this.getProfile();
   }
 }
