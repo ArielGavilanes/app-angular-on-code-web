@@ -1,6 +1,5 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 
-
 @Component({
   selector: 'cursos-list',
   templateUrl: './cursos-list.component.html',
@@ -11,8 +10,14 @@ export class CursosListComponent {
 
   @Output() verDetallesClick: EventEmitter<number> = new EventEmitter<number>();
 
-  onVerDetallesClick(id: number) {
-    this.verDetallesClick.emit(id);
-  }
+  // onVerDetallesClick(id: number) {
+  //   this.verDetallesClick.emit(id);
+  // }
 
+  getPortadaBase64(portadaCurso: any): string {
+    const buffer = portadaCurso?.data;
+    const array = Array.from(new Uint8Array(buffer));
+    const binary = array.map((byte) => String.fromCharCode(byte)).join('');
+    return 'data:image;base64,' + btoa(binary);
+  }
 }

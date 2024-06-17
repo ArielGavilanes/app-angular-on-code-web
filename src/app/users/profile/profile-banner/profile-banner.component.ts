@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DatabaseService } from 'src/app/database/database.service';
 
 @Component({
@@ -11,15 +11,6 @@ export class ProfileBannerComponent implements OnInit {
   @Input() user: any = {};
 
   ngOnInit(): void {}
-  profilePhotoUrl: string =
-    'https://p16-va-default.akamaized.net/img/musically-maliva-obj/1665282759496710~c5_720x720.jpeg';
-  coverPhotoUrl: string =
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAKthpmQNa--6ZneTDfAi5GgZxQEn16OOPGQ&s';
-  username: string = '@dilan001001';
-
-  uploadProfilePhoto() {
-    document.getElementById('profilePhotoInput')?.click();
-  }
 
   getPortadaBase64(portadaCurso: any): string {
     const buffer = portadaCurso?.data;
@@ -28,29 +19,81 @@ export class ProfileBannerComponent implements OnInit {
     return 'data:image;base64,' + btoa(binary);
   }
 
-  onProfilePhotoSelected(event: any) {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.profilePhotoUrl = e.target.result;
-      };
-      reader.readAsDataURL(file);
+  @Output() emitirFotoDePortada: EventEmitter<any> = new EventEmitter<any>();
+
+  @Output() emitirFotoDePerfil: EventEmitter<any> = new EventEmitter<any>();
+
+  archivoSubidoNombre: string = '';
+
+  uploadedFile: any = null;
+
+  uploaded: boolean = false;
+
+  visibleEditCover: boolean = false;
+
+  visibleEditProfile: boolean = false;
+
+  dataForUpdateImage: any = {};
+
+  foto_portada: any | undefined;
+
+  foto_perfil: any | undefined;
+
+  onUploadCover(event: any) {
+    if (event.files.length > 0) {
+      this.uploaded = true;
+      this.archivoSubidoNombre = event.files[0].name;
+
+      this.uploadedFile = event.files[0];
+      this.foto_portada = this.uploadedFile;
     }
   }
 
-  uploadCoverPhoto() {
-    document.getElementById('coverPhotoInput')?.click();
-  }
+  onUploadProfile(event: any) {
+    if (event.files.length > 0) {
+      this.uploaded = true;
+      this.archivoSubidoNombre = event.files[0].name;
 
-  onCoverPhotoSelected(event: any) {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.coverPhotoUrl = e.target.result;
-      };
-      reader.readAsDataURL(file);
+      this.uploadedFile = event.files[0];
+      this.foto_perfil = this.uploadedFile;
     }
   }
+
+  showModalCover() {
+    this.visibleEditCover = true;
+  }
+
+  showModalProfile() {
+    this.visibleEditProfile = true;
+  }
+
+  updateProfilePhoto() {
+    if (this.dataForUpdateImage.foto_portada) {
+      delete this.dataForUpdateImage.foto_portada;
+    }
+    this.dataForUpdateImage.foto_perfil = this.foto_perfil;
+    const formData = new FormData();
+    for (const key in this.dataForUpdateImage) {
+      formData.append(key, this.dataForUpdateImage[key]);
+    }
+
+    this.emitirFotoDePerfil.emit(formData);
+  }
+
+  updateProfileCover() {
+    if (this.dataForUpdateImage.foto_perfil) {
+      delete this.dataForUpdateImage.foto_perfil;
+    }
+
+    this.dataForUpdateImage.foto_portada = this.foto_portada;
+    const formData = new FormData();
+    for (const key in this.dataForUpdateImage) {
+      formData.append(key, this.dataForUpdateImage[key]);
+    }
+
+    this.emitirFotoDePortada.emit(formData);
+  }
+  // closeModalCover() {
+  //   this.visibleEditCover = true;
+  // }
 }

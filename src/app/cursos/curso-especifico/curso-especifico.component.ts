@@ -28,6 +28,13 @@ export class CursoEspecificoComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
+  user: any;
+
+  getProfile() {
+    return this.cursosService.getProfile().subscribe((response) => {
+      this.user = response;
+    });
+  }
   createMatricula(matricula: any) {
     return this.cursosService.createMatricula(matricula).subscribe(
       (response) => {
@@ -115,6 +122,8 @@ export class CursoEspecificoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getProfile();
+
     this.getAllTiposContenido();
 
     this.getRoleId();

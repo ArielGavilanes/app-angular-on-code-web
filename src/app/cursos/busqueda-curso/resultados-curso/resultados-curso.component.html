@@ -20,15 +20,83 @@
     class="p-2"
   >
     <h1 class="text-white">Resultado para busqueda {{ query_curso }}</h1>
-    <div *ngFor="let curso of foundedCursos" class="w-sc">
-      <div>
-        <h2 class="text-white">{{ curso.nombre_curso }}</h2>
-      </div>
-      <div class="">
-        <img [src]="getPortadaBase64(curso.portada_curso)" alt="" />
-      </div>
-      <p-divider />
-    </div>
+    <p-dataView
+      #dv
+      [value]="foundedCursos"
+      [rows]="4"
+      [paginator]="true"
+      [ngStyle]="{ 'background-color': '#303030' }"
+    >
+      <ng-template pTemplate="list" let-cursos>
+        <div class="grid grid-nogutter">
+          <div
+            class="col-12"
+            *ngFor="let curso of cursos; let first = first"
+            class="col-12"
+          >
+            <div
+              class="flex flex-column sm:flex-row sm:align-cursos-center p-4 gap-3"
+              [ngClass]="{ 'border-top-1 surface-border': !first }"
+            >
+              <div class="md:w-10rem relative">
+                <img
+                  class="block xl:block mx-auto border-round w-full"
+                  [src]="getPortadaBase64(curso?.portada_curso)"
+                  [alt]=""
+                />
+              </div>
+              <div
+                class="flex flex-column md:flex-row justify-content-between md:align-cursos-center flex-1 gap-4"
+              >
+                <div
+                  class="flex flex-row md:flex-column justify-content-between align-cursos-start gap-2"
+                >
+                  <div>
+                    <div class="text-lg font-medium text-900 mt-2 text-white">
+                      {{ curso?.nombre_curso }}
+                    </div>
+                    <span class="font-medium text-secondary text-sm">{{
+                      curso?.descripcion_curso
+                    }}</span>
+                    <span
+                      class="font-medium text-secondary text-sm"
+                      *ngIf="curso?.con_certificacion"
+                      ><h4>Incluye certificacion</h4></span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-column md:align-items-end gap-5">
+                <div
+                  class="flex flex-row-reverse md:flex-row gap-2"
+                  *ngIf="curso?.premium_curso"
+                >
+                  <i
+                    class="pi pi-crown text-yellow-600"
+                    style="font-size: 3em"
+                  ></i>
+                </div>
+                <div
+                  class="flex flex-row-reverse md:flex-row gap-2"
+                  *ngIf="!curso?.premium_curso"
+                >
+                  <h3>Gratis</h3>
+                </div>
+                <div class="flex flex-row-reverse md:flex-row gap-2">
+                  <p-button
+                  [routerLink]="['/cursos/', curso?.id_curso]"
+                  class=""
+                    icon="pi pi-shopping-cart"
+                    class="flex-auto md:flex-initial white-space-nowrap "
+                    label="{{'$' + curso?.precio_curso}} "
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </p-dataView>
   </div>
 
   <ng-template #noResults>

@@ -9,7 +9,6 @@ import { CardModule } from 'primeng/card';
   declarations: [CursosPorCategoriaComponent, CursosListComponent],
   imports: [
     CommonModule,
-    CardModule,
     RouterModule
   ],
 })

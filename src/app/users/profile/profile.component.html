@@ -1,6 +1,10 @@
 <app-navbar></app-navbar>
 <div class="bg-black-alpha-90 h-screen">
-  <profile-banner [user]="user"></profile-banner>
+  <profile-banner
+    [user]="user"
+    (emitirFotoDePerfil)="updateUserDataProfile($event)"
+    (emitirFotoDePortada)="updateUserDataCover($event)"
+  ></profile-banner>
   <!-- <profile-banner></profile-banner> -->
   <profile-cursos
     [id_rol]="id_rol"

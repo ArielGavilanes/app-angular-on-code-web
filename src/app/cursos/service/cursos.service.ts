@@ -47,4 +47,8 @@ export class CursosService {
   createMatricula(matricula: any): Observable<any> {
     return this.databaseService.createMatricula(matricula);
   }
+
+  getProfile(): Observable<any> {
+    return this.databaseService.getProfile();
+  }
 }

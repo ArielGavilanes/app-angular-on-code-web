@@ -1,3 +1,67 @@
 :host ::ng-deep .p-progress-spinner-circle {
-  stroke: #FFFF !important;
+  stroke: #ffff !important;
+}
+
+:host ::ng-deep .p-tabview .p-tabview-nav {
+  background: #191919;
+  border: 1px solid white;
+  border-width: 0 0 2px 0;
+}
+
+:host ::ng-deep .p-tabview-nav {
+  display: inline-flex;
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  flex: 1 1 auto;
+  /* justify-content: center;
+  align-items: center; */
+}
+
+:host ::ng-deep .p-tabview .p-tabview-nav li .p-tabview-nav-link {
+  background: #303030;
+  color: #ffffff;
+}
+
+:host ::ng-deep .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+  border-color: #191919;
+}
+
+:host ::ng-deep .p-tabview .p-tabview-panels {
+  background: #303030;
+  padding: 1.25rem;
+  border: 0 none;
+  color: white;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+:host ::ng-deep .p-dataview .p-dataview-content {
+  background: #303030;
+  color: #ffffff;
+  border: 0 none;
+  padding: 0;
+  border-radius: 6px;
+}
+
+:host ::ng-deep .p-paginator {
+  margin-top: 1em;
+  background: #303030;
+  border-width: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
+:host ::ng-deep .p-button {
+  color: #ffffff;
+  background: #191919;
+  border: 1px solid #191919;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+  border-radius: 6px;
+  outline-color: transparent;
+  width: 8em;
 }

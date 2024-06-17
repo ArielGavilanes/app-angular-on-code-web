@@ -92,4 +92,19 @@ export class DatabaseService {
   getMatriculeOfTheLast3Days(): Observable<any> {
     return this.http.get<any>(this.baseUrl + '/matriculas/estadistica');
   }
+
+  updateUserDataProfile(foto_perfil: any) {
+    return this.http.put<any>(
+      this.baseUrl + '/users-data/profile',
+      foto_perfil
+    );
+  }
+
+  updateUserDataCover(foto_portada: any) {
+    return this.http.put<any>(this.baseUrl + '/users-data/cover', foto_portada);
+  }
+
+  getCoursesByCreatorId() {
+    return this.http.get<any>(this.baseUrl + '/cursos/creador/');
+  }
 }

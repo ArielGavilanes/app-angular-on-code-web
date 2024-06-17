@@ -73,7 +73,6 @@
           </span>
         </div>
         <div
-          [routerLink]="['/profile']"
           class="cursor-pointer"
           *ngIf="
             getPortadaBase64(user?.userData?.foto_perfil) !=
@@ -85,10 +84,10 @@
             styleClass="mr-2 "
             shape="circle"
             [image]="getPortadaBase64(user?.userData?.foto_perfil)"
+            (click)="op.toggle($event)"
           />
         </div>
         <div
-          [routerLink]="['/profile']"
           class="cursor-pointer"
           *ngIf="
             getPortadaBase64(user?.userData?.foto_perfil) ==
@@ -106,3 +105,26 @@
     </ng-template>
   </p-menubar>
 </div>
+
+<p-overlayPanel
+  #op
+  [dismissable]="true"
+  [style]="{ 'background-color': '#252525' }"
+>
+  <div class="p-d-flex p-flex-column">
+    <button
+      type="button"
+      class="p-button p-button-rounded p-button-text p-mb-2"
+      [routerLink]="['/profile']"
+    >
+      <i class="pi pi-user p-mr-2 text-white"></i>
+    </button>
+    <button
+      type="button"
+      class="p-button p-button-rounded p-button-text"
+      (click)="logout()"
+    >
+      <i class="pi pi-sign-out p-mr-2 text-white"></i>
+    </button>
+  </div>
+</p-overlayPanel>

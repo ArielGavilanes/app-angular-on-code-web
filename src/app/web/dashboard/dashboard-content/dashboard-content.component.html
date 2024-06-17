@@ -1,0 +1,30 @@
+<div *ngIf="id_rol === 1">
+  <div class="p-2 grid col-12">
+    <div
+      class="col-6 justify-content-center align-content-center align-items-center"
+    >
+      <h1 class="text-white text-6xl font-semibold">
+        Sigues un total de {{ cursos.length + 1 }} cursos
+      </h1>
+    </div>
+    <div class="col-6">
+      <h1 class="text-white">
+        <p-chart
+          type="bar"
+          [data]="barChartData"
+          [options]="barChartOptions"
+          style="height: 400px"
+        ></p-chart>
+      </h1>
+    </div>
+  </div>
+</div>
+
+<div
+  *ngIf="id_rol === 2"
+  class="p-2 justify-content-center align-content-center align-items-center"
+>
+  <h1 class="text-white text-6xl font-semibold text-center">
+    Haz creado un total de {{ cursos.length + 1 }} cursos
+  </h1>
+</div>

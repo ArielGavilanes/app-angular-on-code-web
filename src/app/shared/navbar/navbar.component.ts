@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { SharedService } from '../shared.service';
 import { Router } from '@angular/router';
+import { OverlayPanel } from 'primeng/overlaypanel';
+import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +15,11 @@ export class NavbarComponent implements OnInit {
   items: MenuItem[] = [];
 
   query_curso: string = '';
-  constructor(private sharedService: SharedService, private router: Router) {}
+  constructor(
+    private sharedService: SharedService,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   getProfile() {
     return this.sharedService.getProfile().subscribe(
@@ -39,14 +46,7 @@ export class NavbarComponent implements OnInit {
               routerLink: '/categorias/' + categoria.nombre_categoria,
             })),
           },
-          {
-            label: 'Contacto',
-            icon: 'pi pi-envelope',
-            routerLink: '/contacto',
-          },
-          { label: 'Acerca de', icon: 'pi pi-info', routerLink: '/acerca-de' },
         ];
-        console.log('items', this.items);
       },
       (error) => {
         console.error('Error al obtener las categorías:', error);
@@ -73,4 +73,17 @@ export class NavbarComponent implements OnInit {
     this.getAllCategories();
     this.getProfile();
   }
+
+  logout() {
+    return this.authService.logout();
+  }
+  // @ViewChild('op') overlayPanel: OverlayPanel;
+
+  // abrirPanel(event: Event) {
+  //   this.overlayPanel.toggle(event);
+  // }
+
+  // cerrarPanel() {
+  //   this.overlayPanel.hide();
+  // }
 }

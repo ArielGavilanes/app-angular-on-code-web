@@ -1,51 +1,85 @@
 import { Injectable } from '@angular/core';
-import * as jsPDF from 'jspdf'; // Importa la biblioteca jsPDF
+import * as jsPDF from 'jspdf';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CertificacionService {
-  constructor() {} // Constructor del servicio
+  logoPath = 'assets/img/onCodeWeb.png';
+  logoWidth = 200;
 
-  generarCertificado(): void {
-    const doc = new jsPDF.jsPDF({ // Crea una instancia de jsPDF con configuración personalizada
-      orientation: 'landscape', // Orientación horizontal
-      unit: 'px', // Unidad de medida en píxeles
-      format: [800, 600] // Tamaño personalizado (ancho x alto)
+  constructor() {}
+
+  generarCertificado(cursoNombre: string, estudianteNombre: string): void {
+    const doc = new jsPDF.jsPDF({
+      orientation: 'landscape',
+      unit: 'px',
+      format: [800, 600],
     });
 
-    // Fondo blanco
-    doc.setFillColor('#fff'); // Establece el color de relleno en blanco
-    doc.rect( // Dibuja un rectángulo blanco que cubre toda la página
+    doc.setFillColor('#000');
+    doc.rect(
       0,
       0,
-      doc.internal.pageSize.getWidth(), // Ancho de la página
-      doc.internal.pageSize.getHeight(), // Alto de la página
-      'F' // 'F' indica que el rectángulo se rellena con el color establecido
+      doc.internal.pageSize.getWidth(),
+      doc.internal.pageSize.getHeight(),
+      'F'
     );
 
-    // Texto "Certificado"
-    doc.setTextColor('#000'); // Establece el color del texto en negro
-    doc.setFontSize(48); // Establece el tamaño de fuente en 48 puntos
-    doc.text('Certificado', doc.internal.pageSize.getWidth() / 2, 100, { // Agrega el texto centrado en la página
-      align: 'center',
-    });
+    const logoImg = new Image();
+    logoImg.src = this.logoPath;
+    const logoHeight = (logoImg.height * this.logoWidth) / logoImg.width;
+    const startX = (doc.internal.pageSize.getWidth() - this.logoWidth) / 2;
+    const startY = 50;
+    doc.addImage(logoImg, 'PNG', startX, startY, this.logoWidth, logoHeight);
 
-    // Texto "Por haber completado el curso"
-    doc.setFontSize(24); // Establece el tamaño de fuente en 24 puntos
+    doc.setTextColor('#fff');
+    doc.setFontSize(58);
     doc.text(
-      'Por haber completado el curso',
+      'Certificado de reconocimiento',
       doc.internal.pageSize.getWidth() / 2,
-      200,
-      { align: 'center' } // Agrega el texto centrado en la página
+      250,
+      {
+        align: 'center',
+      }
     );
 
-    // Texto "de Angular"
-    doc.text('de Angular', doc.internal.pageSize.getWidth() / 2, 250, { // Agrega el texto centrado en la página
+    doc.setFontSize(44);
+    doc.text('otorgado a', doc.internal.pageSize.getWidth() / 2, 300, {
       align: 'center',
     });
 
-    // Descarga del PDF
-    doc.save('certificado.pdf'); // Guarda el PDF con el nombre "certificado.pdf"
+    doc.setFontSize(44);
+    doc.setFont('times', 'italic');
+    doc.text(estudianteNombre, doc.internal.pageSize.getWidth() / 2, 350, {
+      align: 'center',
+    });
+
+    doc.setLineWidth(2);
+    doc.setDrawColor('#fff');
+    doc.line(
+      doc.internal.pageSize.getWidth() / 2 - 150,
+      360,
+      doc.internal.pageSize.getWidth() / 2 + 150,
+      360
+    );
+
+    doc.setFontSize(28);
+    doc.setFont('times', 'normal');
+    doc.text(
+      'Por haber completado el curso de',
+      doc.internal.pageSize.getWidth() / 2,
+      400,
+      {
+        align: 'center',
+      }
+    );
+
+    doc.setFontSize(28);
+    doc.text(cursoNombre, doc.internal.pageSize.getWidth() / 2, 430, {
+      align: 'center',
+    });
+
+    doc.save('certificado.pdf');
   }
 }

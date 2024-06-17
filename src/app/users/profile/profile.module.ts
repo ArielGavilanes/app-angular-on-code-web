@@ -9,6 +9,8 @@ import { ButtonModule } from 'primeng/button';
 import { DataViewModule } from 'primeng/dataview';
 import { RouterModule } from '@angular/router';
 import { ChartModule } from 'primeng/chart';
+import { DialogModule } from 'primeng/dialog';
+import { FileUploadModule } from 'primeng/fileupload';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { ChartModule } from 'primeng/chart';
     ButtonModule,
     DataViewModule,
     RouterModule,
-    ChartModule
+    ChartModule,
+    FileUploadModule,
+    DialogModule,
   ],
 })
 export class ProfileModule {}

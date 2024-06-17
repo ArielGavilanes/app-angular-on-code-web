@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { response } from 'express';
 import { ConfirmationService, TreeNode } from 'primeng/api';
+import { DatabaseService } from 'src/app/database/database.service';
 import { CertificacionService } from 'src/app/service/certificacion.service';
 
 @Component({
@@ -110,8 +112,13 @@ export class ContenidoCursoComponent implements OnInit {
   @Input() tiposContenido: TreeNode[] = [];
   opcionSeleccionada: any | undefined;
 
+  @Input() user: any;
+
   generarCertificado() {
-    return this.certificacionService.generarCertificado();
+    return this.certificacionService.generarCertificado(
+      this.curso?.nombre_curso,
+      this.user?.nombre_usuario
+    );
   }
   visible: boolean = false;
 

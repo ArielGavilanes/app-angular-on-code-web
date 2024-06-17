@@ -16,9 +16,17 @@
   background-color: black;
 }
 
-img {
-  width: 100%;
+:host ::ng-deep .p-avatar img {
   height: 100%;
   object-fit: cover;
   overflow: hidden;
+}
+
+:host ::ng-deep .p-menubar .p-submenu-list {
+  padding: 0.5rem 0;
+  background: #252525;
+  border: 0 none;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  width: 12.5rem;
+  border-radius: 6px;
 }

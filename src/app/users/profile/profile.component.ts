@@ -14,12 +14,34 @@ export class ProfileComponent implements OnInit {
     private authService: AuthService
   ) {}
 
+  updateUserDataProfile(dato: any) {
+    return this.databaseService.updateUserDataProfile(dato).subscribe((err) => {
+      console.log(err);
+    });
+  }
+
+  updateUserDataCover(dato: any) {
+    return this.databaseService.updateUserDataCover(dato).subscribe((err) => {
+      console.log(err);
+    });
+  }
+
+  getCoursesByCreatorId() {
+    return this.databaseService.getCoursesByCreatorId().subscribe(
+      (response) => {
+        this.cursos = response;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
   dataForEstadistic: any[] = [];
   getMatriculeOfTheLast3Days() {
     return this.databaseService.getMatriculeOfTheLast3Days().subscribe(
       (response) => {
         this.dataForEstadistic = response;
-        console.log('grafica', this.dataForEstadistic);
       },
       (err) => {
         console.log('error en estadistica', err);
@@ -35,6 +57,7 @@ export class ProfileComponent implements OnInit {
     }
 
     if (this.id_rol === 2) {
+      this.getCoursesByCreatorId();
     }
   }
 

@@ -1,0 +1,6 @@
+:host ::ng-deep  canvas {
+  box-sizing: border-box;
+  display: block;
+  height: 300px;
+  width: 244px;
+}

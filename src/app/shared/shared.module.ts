@@ -11,6 +11,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { RouterModule } from '@angular/router';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 
 @NgModule({
   declarations: [SidebarComponent, NavbarComponent, FooterComponent],
@@ -23,7 +24,8 @@ import { RouterModule } from '@angular/router';
     InputTextModule,
     AvatarGroupModule,
     AvatarModule,
-    RouterModule
+    RouterModule,
+    OverlayPanelModule,
   ],
   exports: [SidebarComponent, NavbarComponent, FooterComponent],
 })

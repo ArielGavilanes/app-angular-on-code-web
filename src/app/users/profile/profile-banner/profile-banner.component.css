@@ -21,15 +21,13 @@
   background-color: white;
 }
 
-
-.profile-info{
+.profile-info {
   position: relative;
   margin-left: 33%;
   margin-top: -10%;
 }
 
-
-.profile-info h1{
+.profile-info h1 {
   font-weight: bolder;
   font-size: 60px;
 }
@@ -41,3 +39,44 @@
 .btn-edit {
   margin-left: 1%;
 }
+
+:host ::ng-deep .p-dialog .p-dialog-content {
+  background: #303030;
+  color: #ffffff;
+  padding: 0 1.5rem 2rem 1.5rem;
+}
+
+:host ::ng-deep .p-dialog .p-dialog-header {
+  border-bottom: 0 none;
+  background: #303030;
+  color: #ffffff;
+  padding: 1.5rem;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+}
+
+:host ::ng-deep .p-text-secondary {
+  color: #ffffff;
+}
+
+:host ::ng-deep .p-button {
+  color: #000000;
+  background: #6f6f6f;
+  border: 1px solid #6f6f6f;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+  border-radius: 6px;
+  outline-color: transparent;
+}
+
+:host ::ng-deep .file-upload-container {
+  display: flex;
+  align-items: center;
+}
+
+.uploaded-file-name {
+  margin-left: 10px;
+}
+
