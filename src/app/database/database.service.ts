@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { AbstractType, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { environment } from 'environment';
 import { Observable } from 'rxjs';
 import { Register } from './interface/register.interface';
